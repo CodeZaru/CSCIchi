@@ -27,13 +27,57 @@ public class TimeElapseCalculator {
 	}
 
 	
-/*	
-	public static int timeStringValidation (String timeString) {
-		if ((timeString.charAt(2)==':')) {
-			stringToIntTimeConverter();
+	
+	public static boolean timeStringValidation (String timeString) {
+		boolean validTimeString = false;
+		if ((timeString.charAt(2)==':')&& (timeString.charAt(5)==':') && (timeString.charAt(8)==':')) {
+			int hrs = Integer.parseInt(timeString.substring(0, 2));
+			int min = Integer.parseInt(timeString.substring(3, 5));
+			int sec = Integer.parseInt(timeString.substring(6, 8));
+			String amPm = timeString.substring(9, 11);
+				if (hrs<=12) {
+					System.out.println("hours are valid: " + hrs);	
+					if (min<=60) {
+						System.out.println("minutes are valid: " + min);											
+						if (sec<=60) {
+							System.out.println("seconds are valid: " + sec);
+							
+								//inner most nested if--start
+									if(amPm.equalsIgnoreCase("AM")) { 								
+										System.out.println("amPM is valid: " + amPm);
+										validTimeString = true;
+									}
+									else if (amPm.equalsIgnoreCase("PM")) {									
+										System.out.println("amPM is valid: " + amPm);
+										validTimeString = true;
+									}											
+									else {
+										System.out.println("AM/PM are invalid: " + amPm);
+									}
+								//inner most nested if--start
+
+						}
+						else 
+							System.out.println("seconds are invalid: " + sec);
+					}
+					else 
+						System.out.println("hours are invalid: " + min);
+				}	
+				else
+					System.out.println("hours are invalid: " + hrs);
 		}
+					
+		return validTimeString;
 	}
-*/
+
+	//stringToIntTimeConverter (timeString);	
+	
+	public static void timeElapseCalulatorUI() {
+		String startTimeString = JOptionPane.showInputDialog("Enter the starting time in \n"
+				+ "in 00:00:00:AM/PM format for hrs mins secs and AM or PM\n"
+				+ "separate your hrs mins secs and AM/PM by colons not spaces");
+		
+	}
 	
 	public static int stringToIntTimeConverter (String timeString) {
 //		int timeInt = 0;
