@@ -7,12 +7,14 @@ public class TimeElapseCalculator {
 				+ "in 00:00:00:AM/PM format for hrs mins secs and AM or PM\n"
 				+ "separate your hrs mins secs and AM/PM by colons not spaces");
 		
-		if ((startTimeString.charAt(2)==':')) {
-
-		stringToIntTimeConverter (startTimeString);
+		if ((startTimeString.charAt(2)==':')&& (startTimeString.charAt(5)==':') && (startTimeString.charAt(8)==':')) {
+			int hrs = Integer.parseInt(startTimeString.substring(0, 2));
+				if (hrs<=12) {
+					System.out.println("hours are valid");
+					stringToIntTimeConverter (startTimeString);
 		
+				}
 		}
-		
 		//instead of coding immediately below, call method to that takes startTimeString param
 		//and converts to String Time to seconds time metric
 		//call should work the string/substring/intconversion and Parsing (i.e., int startTime = Integer.parseInt(startTimeString); 
