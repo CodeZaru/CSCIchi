@@ -82,23 +82,52 @@ public class TimeElapseCalculator {
 	public static String stringToIntTimeConverterAndDeltaCalc (String timeString) {
 		String startTimeString = timeString.substring(0, 11);
 		String endTimeString = timeString.substring(11, 22);		
-		System.out.println("startTimeString" + startTimeString);
-		System.out.println("endTimeString" + endTimeString);
-		
-		int startHrs = Integer.parseInt(startTimeString.substring(0, 2));
-		int startMin = Integer.parseInt(startTimeString.substring(3, 5));
-		int startSec = Integer.parseInt(startTimeString.substring(6, 8));
+		System.out.println("startTimeString: " + startTimeString);
+		System.out.println("endTimeString: " + endTimeString);
+
 		String startAmPm = startTimeString.substring(9, 11);
-		int endHrs = Integer.parseInt(endTimeString.substring(0, 2));
-		int endMin = Integer.parseInt(endTimeString.substring(3, 5));
-		int endSec = Integer.parseInt(endTimeString.substring(6, 8));
 		String endAmPm = endTimeString.substring(9, 11);
 		
+
+		int startHrs = 	Integer.parseInt(startTimeString.substring(0, 2));
+		System.out.println("startHrs before set to 0: " + startHrs);
+		if (startHrs == 12)
+			startHrs = 0;
+		System.out.println("startHrs after set to 0: " + startHrs);
+		System.out.println("startHrs before set to plus 12: " + startHrs);
+		if (startAmPm.equalsIgnoreCase("PM"))
+			startHrs = startHrs +12;
+		System.out.println("startHrs after set to plus 12: " + startHrs);
+		int startMin = Integer.parseInt(startTimeString.substring(3, 5));
+		int startSec = Integer.parseInt(startTimeString.substring(6, 8));
+
+		int endHrs = Integer.parseInt(endTimeString.substring(0, 2));
+		System.out.println("endHrs before set to 0: " + endHrs);
+		if (endHrs == 12)
+			endHrs = 0;
+		System.out.println("endHrs set to 0: " + endHrs);
+		System.out.println("endtHrs before set to plus 12: " + endHrs);
+		if (endAmPm.equalsIgnoreCase("PM"))
+			endHrs = endHrs +12;
+		System.out.println("endHrs after set to plus 12: " + endHrs);
+		int endMin = Integer.parseInt(endTimeString.substring(3, 5));
+		int endSec = Integer.parseInt(endTimeString.substring(6, 8));
+		
 		int startTimeInSeconds = (startHrs * 3600) + (startMin * 60) + (startSec);
+		System.out.println("startTimeInSeconds: " + startTimeInSeconds);
 		int endTimeInSeconds = (endHrs * 3600) + (endMin * 60) + (endSec);
+		System.out.println("endTimeInSeconds: " + endTimeInSeconds);
+		boolean aMpMTest = false;
+		if (endTimeInSeconds < startTimeInSeconds)
+		aMpMTest = true;
+
+		if (aMpMTest) 
+			endTimeInSeconds = (endTimeInSeconds + 86400); 		
+		System.out.println("endTimeInSeconds after attempting to add 86400: " + endTimeInSeconds);
 		int deltaTotalInSeconds = endTimeInSeconds - startTimeInSeconds; 
-		 
-		String totalElapsedTime = 	deltaConverter(deltaTotalInSeconds);
+			
+		System.out.println("deltaTotalInSeconds after attempting to add 86400: " + deltaTotalInSeconds); 
+		String totalElapsedTime = deltaConverter(deltaTotalInSeconds);
 		System.out.println("totalElapsedTime: " + totalElapsedTime);			
 
 		return totalElapsedTime;	

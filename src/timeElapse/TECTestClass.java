@@ -4,18 +4,20 @@ public class TECTestClass {
 	public static void main(String[] args) {
 		
 		//Test1		
-		//testTimeElapseCalculator();
+		teststringToIntTimeConverterAndDeltaCalc();
 		//Test2
-		testTimeElapseCalulatorUI();
+		//testTimeElapseCalulatorUI();
 		//Test3
 		//testTimeStringValidation();
 
 	}
 
-	public static void testTimeElapseCalculator() {
+	public static void teststringToIntTimeConverterAndDeltaCalc() {
 		TimeElapseCalculator testTEC = new TimeElapseCalculator();
-		int testTECResult = testTEC.stringToIntTimeConverterAndDeltaCalc("test");
-		System.out.println("testTECResult: " + testTECResult);
+		String testStartAndEndTime = "11:58:10:pm12:02:15:am";
+		testTEC.stringToIntTimeConverterAndDeltaCalc(testStartAndEndTime);
+		//int testTECResult = 
+		//System.out.println("testTECResult: " + testTECResult);
 	}
 
 	public static void testTimeElapseCalulatorUI() {
