@@ -34,6 +34,12 @@ public class PersonDemo {
 		else
 			System.out.println("Different name");
 		
+		if (john.isSamePerson(jane))
+			System.out.println("Same person");
+		else
+			System.out.println("Different person");
+		    System.out.println(john.isSamePerson(jane));
+		
 	}
 
 }

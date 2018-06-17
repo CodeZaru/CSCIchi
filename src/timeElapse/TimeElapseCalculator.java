@@ -3,29 +3,36 @@ import javax.swing.JOptionPane;
 public class TimeElapseCalculator {
 
 	public static void main(String[] args) {
-		String startTimeString = JOptionPane.showInputDialog("Enter the starting time in \n"
-				+ "in 00:00:00:AM/PM format for hrs mins secs and AM or PM\n"
-				+ "separate your hrs mins secs and AM/PM by colons not spaces");
 		
-		if ((startTimeString.charAt(2)==':')&& (startTimeString.charAt(5)==':') && (startTimeString.charAt(8)==':')) {
-			int hrs = Integer.parseInt(startTimeString.substring(0, 2));
-				if (hrs<=12) {
-					System.out.println("hours are valid");
-					stringToIntTimeConverter (startTimeString);
+		timeElapseCalulatorUI();
 		
-				}
-		}
-		//instead of coding immediately below, call method to that takes startTimeString param
-		//and converts to String Time to seconds time metric
-		//call should work the string/substring/intconversion and Parsing (i.e., int startTime = Integer.parseInt(startTimeString); 
-		//when called and passed the string in correct form 
-		//
-		//  might use coin converter logic to do a total seconds to hr minute second conversion
-		// because once we find the delta we need to convert it back.
-		//we also need logic to convert to total time..
-		//
+		System.exit(0);
 	}
 
+	public static String timeElapseCalulatorUI() {
+		String startAndEndTimeStrings;
+		String startTimeString = JOptionPane.showInputDialog("ENTER the STARTING TIME in \n"
+				+ "in 00:00:00:AM/PM format for hrs mins secs and AM or PM \n"
+				+ "separate your hrs mins secs and AM/PM by colons not spaces");
+		
+		if (!(timeStringValidation (startTimeString))){
+			JOptionPane.showMessageDialog(null, "Your START TIME was INVALID");
+			System.exit(0);
+		}//could re-prompt if have time to code (like Try again: Yes or No)
+
+		String endTimeString = JOptionPane.showInputDialog("ENTER the ENDING TIME in \n"
+				+ "in 00:00:00:AM/PM format for hrs mins secs and AM or PM \n"
+				+ "separate your hrs mins secs and AM/PM by colons not spaces");
+		
+		if (!(timeStringValidation (endTimeString))){
+			JOptionPane.showMessageDialog(null, "Your END TIME was INVALID");
+			System.exit(0);
+		}
+
+		startAndEndTimeStrings = startTimeString + endTimeString; 
+		stringToIntTimeConverterAndDeltaCalc(startAndEndTimeStrings);
+		return startAndEndTimeStrings;
+	}	
 	
 	
 	public static boolean timeStringValidation (String timeString) {
@@ -70,28 +77,49 @@ public class TimeElapseCalculator {
 		return validTimeString;
 	}
 
-	//stringToIntTimeConverter (timeString);	
+
 	
-	public static void timeElapseCalulatorUI() {
-		String startTimeString = JOptionPane.showInputDialog("Enter the starting time in \n"
-				+ "in 00:00:00:AM/PM format for hrs mins secs and AM or PM\n"
-				+ "separate your hrs mins secs and AM/PM by colons not spaces");
+	public static String stringToIntTimeConverterAndDeltaCalc (String timeString) {
+		String startTimeString = timeString.substring(0, 11);
+		String endTimeString = timeString.substring(11, 22);		
+		System.out.println("startTimeString" + startTimeString);
+		System.out.println("endTimeString" + endTimeString);
+		
+		int startHrs = Integer.parseInt(startTimeString.substring(0, 2));
+		int startMin = Integer.parseInt(startTimeString.substring(3, 5));
+		int startSec = Integer.parseInt(startTimeString.substring(6, 8));
+		String startAmPm = startTimeString.substring(9, 11);
+		int endHrs = Integer.parseInt(endTimeString.substring(0, 2));
+		int endMin = Integer.parseInt(endTimeString.substring(3, 5));
+		int endSec = Integer.parseInt(endTimeString.substring(6, 8));
+		String endAmPm = endTimeString.substring(9, 11);
+		
+		int startTimeInSeconds = (startHrs * 3600) + (startMin * 60) + (startSec);
+		int endTimeInSeconds = (endHrs * 3600) + (endMin * 60) + (endSec);
+		int deltaTotalInSeconds = endTimeInSeconds - startTimeInSeconds; 
+		 
+		String totalElapsedTime = 	deltaConverter(deltaTotalInSeconds);
+		System.out.println("totalElapsedTime: " + totalElapsedTime);			
+
+		return totalElapsedTime;	
 		
 	}
 	
-	public static int stringToIntTimeConverter (String timeString) {
-//		int timeInt = 0;
-//		if ((timeString.charAt(2)==':')) {
-			int timeInt = 555; 
-			System.out.println("timeInt: " + timeInt);			
-//		}
-		return timeInt;	
-		
-		
-		// && (timeString.charAt(5)) && (timeString.charAt(8))
-		//Do variable declarations string parsed to subsring and conversions
-		
+	public static String deltaConverter(int deltaSecondsTotal) {
+	
+	    final int MINS_IN_HOUR = 60;
+	    final int SECS_IN_MINUTE = 60;
 
+	    int deltaSeconds = deltaSecondsTotal % SECS_IN_MINUTE;
+	    System.out.println("deltaSeconds: " + deltaSeconds);
+	    int totalMinutes = deltaSecondsTotal / SECS_IN_MINUTE;
+	    System.out.println("totalMinutes: " + totalMinutes);	    
+	    int deltaMinutes = totalMinutes % MINS_IN_HOUR;
+	    System.out.println("deltaMinutes: " + deltaMinutes);	    
+	    int deltaHours = totalMinutes / MINS_IN_HOUR;
+	    System.out.println("deltaHours: " + deltaHours);	    	    
+
+	    return deltaHours + " hours " + deltaMinutes + " minutes " + deltaSeconds + " seconds";
 	}
 	
 }

@@ -6,22 +6,22 @@ public class TECTestClass {
 		//Test1		
 		//testTimeElapseCalculator();
 		//Test2
-		//testTimeElapseCalulatorUI();
+		testTimeElapseCalulatorUI();
 		//Test3
-		testTimeStringValidation();
+		//testTimeStringValidation();
 
 	}
 
 	public static void testTimeElapseCalculator() {
 		TimeElapseCalculator testTEC = new TimeElapseCalculator();
-		int testTECResult = testTEC.stringToIntTimeConverter("test");
+		int testTECResult = testTEC.stringToIntTimeConverterAndDeltaCalc("test");
 		System.out.println("testTECResult: " + testTECResult);
 	}
 
 	public static void testTimeElapseCalulatorUI() {
 		TimeElapseCalculator testTECUI = new TimeElapseCalculator();
-		testTECUI.timeElapseCalulatorUI();
-		//System.out.println("testTECUIResult: " + testTECUIResult);
+		String testTECUIResult = testTECUI.timeElapseCalulatorUI();
+		System.out.println("testTECUIResult: " + testTECUIResult);
 	}
 	
 	public static void testTimeStringValidation() {
