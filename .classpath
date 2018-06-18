@@ -5,10 +5,12 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="RPSjava/|CECh3thru5/|timeElapse/|SecretCodeASCIIDecoder/" kind="src" path="src"/>
+	<classpathentry excluding="RPSjava/|CECh3thru5/|timeElapse/|SecretCodeASCIIDecoder/|KlingonOx/|EdocARGame/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/RPSjava"/>
 	<classpathentry kind="src" path="src/CECh3thru5"/>
 	<classpathentry kind="src" path="src/timeElapse"/>
 	<classpathentry kind="src" path="src/SecretCodeASCIIDecoder"/>
+	<classpathentry kind="src" path="src/KlingonOx"/>
+	<classpathentry kind="src" path="src/EdocARGame"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
