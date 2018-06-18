@@ -7,23 +7,30 @@ public class Decoder {
 	}
 
 	public String secretDecoder(String secretCode) {
-
+//	public static secretDecoder(String secretCode) {
 		String secretCodeStr = secretCode;
-		StringBuffer result = new StringBuffer();
+//		StringBuffer result = new StringBuffer();
 		int secretCodeCharASCIIValue;
 		int decodedSecretCodeCharASCIIValue;
 		char decodedSecretCodeChar;
-		
+
+int key = 1;		
+while (key <= 10) {		
+//for (key = 1; key <= 10; key++ ) { 		
+	StringBuffer result = new StringBuffer();
+	
 		for (int i = 0; i < secretCodeStr.length(); i++) {
+
 			char secretCodeChar = secretCodeStr.charAt(i);
 			
 			secretCodeCharASCIIValue = (int) secretCodeChar;//convert char to ASCII code
 			
 			System.out.println("secretCode: " + secretCodeChar);
 			System.out.println("secretCodeCharASCIIValue: " + secretCodeCharASCIIValue);			
-			int key = 10;	
-		//		for (int key = 1; key <= 10; key++ ) {
+
 					
+			System.out.println("key value equals: " + key);
+			
 					if (secretCodeCharASCIIValue - key < 32) {					
 						decodedSecretCodeCharASCIIValue = ((secretCodeCharASCIIValue - key) + 127) -32; 
 					}
@@ -34,13 +41,14 @@ public class Decoder {
 					
 				decodedSecretCodeChar = (char) decodedSecretCodeCharASCIIValue;
 				result.append(decodedSecretCodeChar);			
-			//	}
-			
-			//result.append(secretCodeChar);			
-			//System.out.println("secretCodeResult: " + result);
+		
+//			System.out.println("secretCodeResult: " + result);
 		}
-
-		return result.toString();
+System.out.println("secretCodeResult: " + result);		
+System.out.println("key before increment: " + key);
+key++;
+System.out.println("key before increment: " + key);
+//		return result.toString();
 		
 			//		StringBuffer result = new StringBuffer();
 /*		
@@ -76,6 +84,8 @@ public class Decoder {
 		}
 */		
 		
+	}
+return "test";//result.toString();
 	}
 }
 	
