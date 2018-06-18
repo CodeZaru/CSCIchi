@@ -12,8 +12,6 @@ import java.util.Scanner;
 
 public class RPSGame {
 
-	//Unfortunately, my Switch statement was working until tha last minute, and I can't fix it in time....
-	
 	
 	enum HandChoice {
 		R, P, S
@@ -26,7 +24,8 @@ public class RPSGame {
 		System.out.println("player1HandData: " + player1HandData);
 		HandChoice opponentHandData = generateComputerHand();
 		System.out.println("opponentHandData: " + opponentHandData);
-		gamePlay(player1HandData, opponentHandData);
+		String gameResultForRPS = gamePlay(player1HandData, opponentHandData);
+		System.out.println("gameResultForRPS: " + gameResultForRPS);
 		// jOption prompt user for game play options: 1-player or 2-players
 		// either calls the computers hand method and assigns to opponent or the 2nd
 		// player and assigns to opponent
