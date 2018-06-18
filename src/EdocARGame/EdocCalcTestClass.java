@@ -5,7 +5,7 @@ public class EdocCalcTestClass {
 		// Test1
 		testEdocCalculator();
 		
-		//Test2
+		//Test2: the full UI
 		testExpPtsCalcUI();		
 	}
 

@@ -17,7 +17,7 @@ public class EdocCalculator {
 		if (!(edocDataInputValidation(expCalcData))) {
 			JOptionPane.showMessageDialog(null, "Your DATA ENTRY was INVALID FORMAT");
 			System.exit(0);
-		} // could re-prompt if have time to code (like Try again: Yes or No)
+		} // could re-prompt with (like Try again: Yes or No)
 
 
 	stringToIntConverAndExCalc(expCalcData);
