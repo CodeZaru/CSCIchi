@@ -10,12 +10,8 @@ public class DecoderTestClass {
 		Decoder testDecoder = new Decoder();
 		String testSecretCode = "Ro$";
 		String testsecretDecoderResult = testDecoder.secretDecoder(testSecretCode);
-		//String testsecretDecoderResult = testSecretCode.gamePlay();
 		System.out.println("testSecretDecoderResult: " + testsecretDecoderResult);
 
-		//int testTECResult = 
-//		System.out.println("testSecretCode: " + testSecretCode);
 	}
-
 	
 }
