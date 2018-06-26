@@ -59,4 +59,16 @@ public class Temperature {
 			this.temp = (temp-32)*(5/9);
 	}
 	
+	//why static doesn'tmake sense:  we aren't creating an object, we are comparing two objects and giving boolean return type
+	public boolean isSame(Temperature that) {
+		return this.temp == that.temp;
+	}
+	
+	public boolean isGreater(Temperature that) {
+		return this.temp > that.temp;
+	}
+	
+	public boolean isLess(Temperature that) {
+		return this.temp < that.temp;
+	}
 }
