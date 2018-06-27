@@ -18,7 +18,7 @@ public class Person2 {
 	
 	//Overloaded Constructor (if you give me params I'll use this constructor)
 	//otherwise I'll use default
-	//this refers to .. and the brown frefers to local vairable that is gone after running
+	//this refers to .. and the brown refers to local variable that is gone after running
 	//if you get rid of the this. then java will assign null and 0..
 	//if you change the signature to be String n and int a and change the righthand side to  n and a
 	//in that case java would automatically use this b/c it won't confuse with the local variable.

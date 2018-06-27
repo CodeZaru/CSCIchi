@@ -13,7 +13,7 @@ public class Temperature {
 			this.temp = temp;
 		
 		if (Character.toUpperCase(scale) == 'F')
-			this.temp = (temp-32)*(5/9);
+			this.temp = (temp-32f)*(5f/9f);
 	}
 	
 	Temperature(float temp){
@@ -71,4 +71,9 @@ public class Temperature {
 	public boolean isLess(Temperature that) {
 		return this.temp < that.temp;
 	}
+	
+	public String toString() {
+		return this.temp + "C\n";
+	}
+	
 }
