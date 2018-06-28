@@ -15,6 +15,7 @@ public class RationalDemo {
 		//printf commands: d integer s string c character f for double so .2 means decimal and 2
 		
 		//if you didn't use r1.toString(); and instead just write the following it will by default call our toStirng method.
+		System.out.printf("the second variation");
 		System.out.printf("R1: %.2f %s\n",r1.getValue(), r1);
 		System.out.printf("R2: %.2f %s\n",r2.getValue(), r2);	
 		System.out.printf("R3: %.2f %s\n",r3.getValue(), r3);	

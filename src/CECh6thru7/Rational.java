@@ -14,7 +14,10 @@ public class Rational {
 	}
 	
 	Rational(int numerator, int denominator){
-		if(denominator ==0) {
+		if(denominator == 0) {//note that in this case, YOU CANNOT USE this.denominator or it will pull the one from private int denominator (which is zero by default) 
+			//You could also make your local variable a different name which would eliminate the need for this (I think)
+			//the local variable passed in via the arg, as opposed this 
+			
 			System.out.println("Fatal error, denominator cannot be zero.");
 			System.exit(0);//don't use "break" b/c it will only break you out of the constructor and go to the next line of code..
 		}
@@ -57,6 +60,8 @@ public class Rational {
 		
 		//THIS IS THE MAIN PART OF THE PROBLEM LEFT TO SOLVE
 		//NEED A LOOP ETC....
+		
+		//could try recursion, which uses your stack memory but less code memory.
 	}
 
 	public double getValue() {
