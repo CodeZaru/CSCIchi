@@ -8,10 +8,14 @@ public class LetterCountAlphabeticalArray {
 		System.out.println("type a sentence ending in a period");
 		String input = new java.util.Scanner(System.in).nextLine().toUpperCase();
 				
-		while (input.charAt(index) != '.') {
-			if (Character.isLetter(input.charAt(index)))
-				frequency[input.charAt(index) - 'A']++;
-			index++;
+		//while (input.charAt(index) != '.') { //sentinel value, looks at one letter at a time and loops through
+		while (input.charAt(index++) != '.') { //sentinel value, looks at one letter at a time and loops through and moved index to gaurd	
+			if (Character.isLetter(input.charAt(index)))//this is the validation guard that ensures the data entered is a letter..might also be able to use isaphabetic
+				frequency[input.charAt(index) - 'A']++;//provides me the corresponding to the index ASCII math 
+			//the frequency[input.charAt(index)//note that this first part extracts the letter and the
+			//- 'A']// part gets the ASCII value converted into our array index of 0thru 25
+			//++; on the line outside the bracket line note that the ++ makes index 25 be 26...I think 
+			//index++;
 		}
 		
 		for(int i = 0; i< 26; i++)
