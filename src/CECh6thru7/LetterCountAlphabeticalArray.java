@@ -14,7 +14,7 @@ public class LetterCountAlphabeticalArray {
 				frequency[input.charAt(index) - 'A']++;//provides me the corresponding to the index ASCII math 
 			//the frequency[input.charAt(index)//note that this first part extracts the letter and the
 			//- 'A']// part gets the ASCII value converted into our array index of 0thru 25
-			//++; on the line outside the bracket line note that the ++ makes index 25 be 26...I think 
+			//++; on the line outside the bracket line note that the ++ makes increments the frequency count..not the index 25 be 26...I think 
 			//index++;
 		}
 		
