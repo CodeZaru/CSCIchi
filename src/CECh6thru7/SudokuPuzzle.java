@@ -91,6 +91,26 @@ public class SudokuPuzzle {
 		return board[row][col];
 	}
 	
+	//says "is" then is a boolean convention
+	public boolean isFull() {
+		for (int r=0; r<9; r++) 
+			for (int c = 0; c<9; c++) 
+				if (board [r][c] == 0)
+					return false;
+				
+			return true;
+		}
+	
+	public void reset () {
+		//the start array
+		for (int r=0; r<9; r++) {
+			for (int c = 0; c<9; c++) {
+				if (start [r][c] == false) {
+					board[r][c] = 0;		
+				}
+			}
+		}
+	}
 	
 	public static void main(String[] args) {
 		SudokuPuzzle game = new SudokuPuzzle();
