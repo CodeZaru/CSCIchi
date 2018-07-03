@@ -9,18 +9,20 @@ public class SudokuPuzzle {
 // this basically allocates 9 bytes of memory in your RAM	
 //row by column, so [0][8] is last cell of 1st row and [1][8] is the last cell of second row.
 	
-	SudokuPuzzle() {
+	SudokuPuzzle() {//SO NOTE THAT EVEN IF WE TAKE OUT THE ASTRIX SECTION, THE ARRAYS STILL PRINT
 		//initialize to 0 the array, all rows in column 0
 		//for(int row = 0; row < 9; row++)
 		//	board [row][0] = 0;
 
 		//when working w/ multi dimensional array you will often be working with nested loops. 
-		for(int row = 0; row < 9; row++)
+/*		for(int row = 0; row < 9; row++)
 			//for row zero we populate all columns with the inner loop, then jump back to outer loop
-			for (int col = 0; col < 9; col++)
+			for (int col = 0; col < 9; col++) //{
 			board [row][col] = 0;
-
-	}
+			//start[row][col] = false;
+			//}
+*/
+		}
 
 	//use the toString method to overwrite the way we want it too (review how this refers to memory by default, 
 	//but we can overwrite
@@ -50,11 +52,45 @@ public class SudokuPuzzle {
 	//think of this as set initial
 	//since we are going to populate the board from the main method we make this public, but if we were doing a more legit...
 	public void addInitial(int row, int col, int value) {
-		if (!start[row][col]) {
+	//	if (!start[row][col]) {
 			board[row][col] = value;
 			start[row][col] = true; //true = not editable  THIS IS A PARALLEL ARRAY THAT WE ARE SETTING FLAGS ON
-		}	
+	//	}	
 }
+	
+	public void addGuess(int row, int col, int value) {
+		if(!start[row][col])
+			board[row][col] = value;
+	}
+	
+
+	
+	//checkPuzzle is likely Public b/c it is boolean: okRow, okColumn, okSubArray
+	public boolean checkPuzzle() {
+		
+		return (okRows() && okCols() && okSubgroups());
+	}
+	
+	private boolean okRows() {
+		//finish your code here
+		return true;
+	}
+	
+	private boolean okCols() {
+		//finish your code here
+		return true;
+	}
+	
+	private boolean okSubgroups() {
+		//finish your code here  (this one will have subGroup)
+		//I'll make temp arrays that subtract the cells and if any zeros then flag it and return the offenders  
+		return true;
+	}
+	
+	public int getValueIn(int row, int col) {
+		return board[row][col];
+	}
+	
 	
 	public static void main(String[] args) {
 		SudokuPuzzle game = new SudokuPuzzle();
@@ -64,11 +100,17 @@ public class SudokuPuzzle {
 //if you change the name of toSting to toString1 or myPrint then if you call toString it will return memory, but if you call 
 //your custom name it will return what you want..
 
-		System.out.println(game);
+		//System.out.println(game);
 				
-//		game.addInitial(0,  0,  1);
-//		game.addInitial(0,  1,  2);
+		game.addInitial(0,  0,  1);
+		game.addInitial(0,  1,  2);
+		game.addInitial(1,  1,  5);
 		
+		game.addGuess(2,  3,  1);
+		game.addGuess(0,  0,  4);
+		
+		System.out.println(game);
+		System.out.println(game.getValueIn(1,1));
 	}
 	
 }
