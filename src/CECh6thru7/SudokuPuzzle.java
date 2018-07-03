@@ -96,6 +96,7 @@ public class SudokuPuzzle {
 //complete your code in here..which is updating the result--you try to add value and if it is ok then rowOk, colOk subGroupOk
 //then you can populate--return boolean
 		//you can add other methods but they have to be private! singleRowOk, singleColOk, and singleSubGroupOK
+		//one loop and one if else, so you use the boolean and you print the numbers.
 		return result; 
 	}
 	
@@ -142,5 +143,7 @@ public class SudokuPuzzle {
 		System.out.println(game);
 		System.out.println(game.getValueIn(1,1));
 	}
+	
+	//NOTES: make sure that you know HOW TO POPULATE VALUES INTO A TWO DIMENSIONAL ARRAY.
 	
 }
