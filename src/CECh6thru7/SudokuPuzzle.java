@@ -90,6 +90,14 @@ public class SudokuPuzzle {
 	public int getValueIn(int row, int col) {
 		return board[row][col];
 	}
+
+	public boolean [] getAllowedValues(int row, int col) {
+		boolean [] result = new boolean[9];
+//complete your code in here..which is updating the result--you try to add value and if it is ok then rowOk, colOk subGroupOk
+//then you can populate--return boolean
+		//you can add other methods but they have to be private! singleRowOk, singleColOk, and singleSubGroupOK
+		return result; 
+	}
 	
 	//says "is" then is a boolean convention
 	public boolean isFull() {
@@ -111,6 +119,8 @@ public class SudokuPuzzle {
 			}
 		}
 	}
+	
+
 	
 	public static void main(String[] args) {
 		SudokuPuzzle game = new SudokuPuzzle();
