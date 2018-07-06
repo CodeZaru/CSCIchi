@@ -20,7 +20,7 @@ public class CheckRepeat {
 				//then go through the inner loop, then bounce out to the outer loop
 				for (int j = i + 1; j < 9; j++) {
 					if (numbers[i] == numbers[j]) {
-						repeated = true;
+						repeated = true;//if there is a repeat you raise the flag--DON'T do the else repeat is false just set the flag once
 						break;
 					}										
 				}
