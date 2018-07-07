@@ -76,10 +76,24 @@ public class RatNumGCDWithNotes
 		//this method is an interesting one..
 		//it will receive two integers, but will need to convert 
 		//to float of double and use modulus to find GCD
+		
 		double numerator = x;
 		double denominator = y;
-		
+		int gCD = 0;
 		//higher level analysis of the numbers:  denominator > 0; x != y; 
+		if (y < 1) return -1;//check for denominator of 0, and if so then return error code.
+		if (x==y) return x;//quick equality check: logical shortcut to set up next logical shortcut
+		if (Math.max(numerator, denominator) % Math.min(numerator, denominator) == 0) return Math.min(x, y);//check smaller go into larger
+		if ((Math.min(numerator, denominator) % 2 == 0) && (Math.max(numerator, denominator) % Math.min(numerator, denominator)==0)) return (Math.min(x, y)/2);
+		else
+			{
+			for (int i = Math.min(x, y)/2; i >= 1; i--) 
+				{
+				if ((Math.min(x, y) % gCD == 0) && (Math.max(x, y) % gCD == 0)) 
+					gCD = i;				
+				}
+			}
+		//control the zero denominator at data entry, but check anyway. 
 		//Math.min(x, y); does the lesser go into the larger w/o remainder?
 		//is the lesser even or odd divisible by 2, if no remainder then is bigger divisible by same
 		//if not then iterate from modulus of half all the way to one.. 
@@ -93,7 +107,7 @@ public class RatNumGCDWithNotes
 		//if smaller doesn't go into larger then does half smaller go into it?
 		//if one id the only common factor, then it is already in simplest form
 		//then possibly convert back to int
-		return x/y;
+		return gCD;
 	}
 	
 	public String toString() {
