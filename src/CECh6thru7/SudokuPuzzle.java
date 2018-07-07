@@ -24,7 +24,8 @@ public class SudokuPuzzle {
 */
 		}
 
-	//use the toString method to overwrite the way we want it too (review how this refers to memory by default, 
+	//use the toString method to overwrite the way we want it too 
+	//(review how this refers to memory by default, 
 	//but we can overwrite
 	public String toString() {
 		String result = "";

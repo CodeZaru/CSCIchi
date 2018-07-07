@@ -16,8 +16,8 @@ public class TemperatureDemo {
 			else
 			System.out.println("b is warnmer.");
 		
-		
 		System.out.println(kitchen);
+		System.out.println(kitchen.toString());
 	}
 
 }
