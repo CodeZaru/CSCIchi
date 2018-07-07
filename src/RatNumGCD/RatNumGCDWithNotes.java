@@ -25,14 +25,18 @@
 */
 
 
-public class RatNumGCD 
+public class RatNumGCDWithNotes 
 {
 	private int numerator;
 	private int denominator;
 	
-	//Try to use wrapper classes to box and unbox primitive types
-	//also study autoType conversion p298
-	//and the Math class..
+	//Try to use wrapper classes to box and unbox primitive types p413
+	//also study autoType conversion p298--can always move right but not to the left
+	//byte => short => int => long => float => double
+	//so you can do the following two lines:
+	//int intVariable = 7; 
+	//double doubleVariable = intVariable;
+	//and the Math class.. p410
 	//not for this program but for arrays---sorting searching cloning etc...
 	//sequential search page 530.
 	
@@ -70,7 +74,25 @@ public class RatNumGCD
 	private static int getGCD(int x, int y)
 	{
 		//this method is an interesting one..
-		//it will perform 
+		//it will receive two integers, but will need to convert 
+		//to float of double and use modulus to find GCD
+		double numerator = x;
+		double denominator = y;
+		
+		//higher level analysis of the numbers:  denominator > 0; x != y; 
+		//Math.min(x, y); does the lesser go into the larger w/o remainder?
+		//is the lesser even or odd divisible by 2, if no remainder then is bigger divisible by same
+		//if not then iterate from modulus of half all the way to one.. 
+		//if the only common GCD is one then they are in simplest form
+		//could create another method to keep code simple that checks same, smaller, half smaller,  
+		//or returns index to start the search.
+		//the GCD search is a loop that tries factors starting at returned index
+		//and if smaller is divisible then try it against larger.  
+		//logical operation if both are divisible by i then return i otherwise decrement i and try again.
+		//if remainder exists then go to the next.
+		//if smaller doesn't go into larger then does half smaller go into it?
+		//if one id the only common factor, then it is already in simplest form
+		//then possibly convert back to int
 		return x/y;
 	}
 	
