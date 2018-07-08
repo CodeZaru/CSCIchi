@@ -207,6 +207,8 @@ public class RatNumGCDWithNotes
 			denominator = keyboard.nextInt();
 			}		
 		System.out.println("You entered: " + denominator);
+		
+		simplify(numerator, denominator);
 	}
 	
 	public void writeOutput(RatNumGCDWithNotes CTO)
