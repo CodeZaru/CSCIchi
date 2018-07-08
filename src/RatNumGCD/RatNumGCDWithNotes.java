@@ -91,11 +91,16 @@ public class RatNumGCDWithNotes
 			{
 			for (int i = Math.min(x, y)/2; i >= 1; i--) 
 				{
-				System.out.println("shortcut GCD for loop: GCD = " + i);
+				System.out.println("shortcut GCD for loop: GCD attempt = " + i);
 				System.out.println("(Math.min(x, y) % i: " + (Math.min(x, y) % i));
 				System.out.println("(Math.max(x, y) % i: " + (Math.max(x, y) % i));
 				if ((Math.min(x, y) % i == 0) && (Math.max(x, y) % i == 0)) 
-					gCD = i;				
+					{
+					System.out.println("GCD: " + i);
+					System.out.println("GCD: " + i);
+
+					return gCD = i;				
+					}
 				}
 			}
 		//control the zero denominator at data entry, but check anyway. 
