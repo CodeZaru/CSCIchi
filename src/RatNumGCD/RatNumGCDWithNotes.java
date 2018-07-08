@@ -29,6 +29,7 @@ public class RatNumGCDWithNotes
 {
 	private int numerator;
 	private int denominator;
+	private int GCD;
 	
 	//Try to use wrapper classes to box and unbox primitive types p413
 	//also study autoType conversion p298--can always move right but not to the left
@@ -54,8 +55,10 @@ public class RatNumGCDWithNotes
 		//the static method GCD to perform its operation
 		//and upon finishing, this code saves the numerator and denominator
 		//instance variables in simplest form
-		numerator = origNumeratorArg;//converted to simplified form
-		denominator = origDenominatorArg;//converted to simplified form			
+//		numerator = origNumeratorArg;//converted to simplified form
+//		denominator = origDenominatorArg;//converted to simplified form			
+		simplify(origNumeratorArg,origDenominatorArg);
+	
 	}
 	
 	//THINK  about Interface/Encapsulation when doing the following
@@ -63,12 +66,14 @@ public class RatNumGCDWithNotes
 	//AND PAGE 327/328 JAVADOC and UML...
 	//
 	private void simplify(int origNumeratorArg, int origDenominatorArg)
-	{
+	{		
 		//this is a setter method if it changes the private instance variables
 		//this method takes origNumeratorArg and origDenominatorArg
 		//calls the getGCD method to get the GCD and 
 		//uses the GCD to reduce to simpNumerator and simpDenominator
-		
+		GCD = getGCD(origNumeratorArg, origDenominatorArg);
+		numerator = origNumeratorArg/GCD;
+		denominator = origDenominatorArg/GCD;
 	}
 	
 	private static int getGCD(int x, int y)
@@ -101,6 +106,7 @@ public class RatNumGCDWithNotes
 
 					return gCD = i;				
 					}
+//				return gCD = i;	
 				}
 			}
 		//control the zero denominator at data entry, but check anyway. 
@@ -150,7 +156,7 @@ public class RatNumGCDWithNotes
 		
 		RatNumGCDWithNotes test1 = new RatNumGCDWithNotes(105, 25);
 		System.out.println("getGCD returned: " + test1.getGCD(test1.numerator, test1.denominator));
-
+		System.out.println("Stored values: " + test1);
 	}
 	
 }
