@@ -40,13 +40,13 @@ public class RatNumGCDWithNotes
 	//not for this program but for arrays---sorting searching cloning etc...
 	//sequential search page 530.
 	
-	RatNumGCD() 
+	RatNumGCDWithNotes() 
 	{
 		numerator = 0;
 		denominator = 1;
 	}
 	
-	RatNumGCD(int origNumeratorArg, int origDenominatorArg)
+	RatNumGCDWithNotes(int origNumeratorArg, int origDenominatorArg)
 	{
 		//this is a constructor that takes two args and 
 		//before saving the instance variables it calls
@@ -84,12 +84,17 @@ public class RatNumGCDWithNotes
 		if (y < 1) return -1;//check for denominator of 0, and if so then return error code.
 		if (x==y) return x;//quick equality check: logical shortcut to set up next logical shortcut
 		if (Math.max(numerator, denominator) % Math.min(numerator, denominator) == 0) return Math.min(x, y);//check smaller go into larger
-		if ((Math.min(numerator, denominator) % 2 == 0) && (Math.max(numerator, denominator) % Math.min(numerator, denominator)==0)) return (Math.min(x, y)/2);
+
+		if ((Math.min(numerator, denominator) % 2 == 0) && 
+				(Math.max(numerator, denominator) % (Math.min(numerator, denominator)/2)==0)) return (Math.min(x, y)/2);
 		else
 			{
 			for (int i = Math.min(x, y)/2; i >= 1; i--) 
 				{
-				if ((Math.min(x, y) % gCD == 0) && (Math.max(x, y) % gCD == 0)) 
+				System.out.println("shortcut GCD for loop: GCD = " + i);
+				System.out.println("(Math.min(x, y) % i: " + (Math.min(x, y) % i));
+				System.out.println("(Math.max(x, y) % i: " + (Math.max(x, y) % i));
+				if ((Math.min(x, y) % i == 0) && (Math.max(x, y) % i == 0)) 
 					gCD = i;				
 				}
 			}
@@ -133,6 +138,14 @@ public class RatNumGCDWithNotes
 	public void writeOutput()
 	{
 		
+	}
+	
+	
+	public static void main(String[] args) {
+		
+		RatNumGCDWithNotes test1 = new RatNumGCDWithNotes(105, 25);
+		System.out.println("getGCD returned: " + test1.getGCD(test1.numerator, test1.denominator));
+
 	}
 	
 }
