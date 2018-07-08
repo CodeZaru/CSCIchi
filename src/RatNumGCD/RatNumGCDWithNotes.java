@@ -155,7 +155,7 @@ public class RatNumGCDWithNotes
 	public static void main(String[] args) {
 		
 		RatNumGCDWithNotes test1 = new RatNumGCDWithNotes(105, 25);
-		System.out.println("getGCD returned: " + test1.getGCD(test1.numerator, test1.denominator));
+//		System.out.println("getGCD returned: " + test1.getGCD(test1.numerator, test1.denominator));
 		System.out.println("Stored values: " + test1);
 	}
 	
