@@ -80,7 +80,7 @@ public class RatNumGCDWithNotes
 		if (GCD== -1) System.out.println("ERROR CODE -1");
 		if (GCD == 0) System.out.println("Rational number with zero in the numerator");
 		else 
-		{
+		{	
 		numerator = numerator/GCD;
 		denominator = denominator/GCD;
 		}
@@ -93,8 +93,13 @@ public class RatNumGCDWithNotes
 		//calls the getGCD method to get the GCD and 
 		//uses the GCD to reduce to simpNumerator and simpDenominator
 		GCD = getGCD(origNumeratorArg, origDenominatorArg);
+		if (GCD== -1) System.out.println("ERROR CODE -1");
+		if (GCD == 0) System.out.println("Rational number with zero in the numerator");
+		else 
+		{			
 		numerator = origNumeratorArg/GCD;
 		denominator = origDenominatorArg/GCD;
+		}
 	}
 	
 	private void simplify(RatNumGCDWithNotes CTO)
@@ -116,7 +121,7 @@ public class RatNumGCDWithNotes
 		//higher level analysis of the numbers:  denominator > 0; x != y; 
 		if (y < 1) return -1;//check for denominator of 0, and if so then return error code.
 		if (x == 0) return 0;//zero in numerator is rational.
-		if (x==y) return x;//quick equality check: logical shortcut to set up next logical shortcut
+		if (x==y) return y;//quick equality check: logical shortcut to set up next logical shortcut
 		if (Math.max(numerator, denominator) % Math.min(numerator, denominator) == 0) return Math.min(x, y);//check smaller go into larger
 
 		if ((Math.min(numerator, denominator) % 2 == 0) && 
@@ -213,9 +218,67 @@ public class RatNumGCDWithNotes
 	
 	public static void main(String[] args) {
 		
+
+		System.out.println("*************************************");
+		System.out.println("TEST CASE 1");
+		System.out.println("*************************************");
+		System.out.println("Numerator is 105 and denominator is 25");
 		RatNumGCDWithNotes test1 = new RatNumGCDWithNotes(105, 25);
 		System.out.println("Stored values toString: " + test1);
 		System.out.println("Stored values Double: " + test1.getValue());
+
+		System.out.println(" ");
+		System.out.println("#############################################");
+		System.out.println(" ");
+		
+
+		System.out.println("*************************************");
+		System.out.println("TEST CASE 2");
+		System.out.println("*************************************");
+		System.out.println("Numerator is 50 and denominator is 10");
+		RatNumGCDWithNotes test2 = new RatNumGCDWithNotes(50, 10);
+		System.out.println("Stored values toString: " + test2);
+		System.out.println("Stored values Double: " + test2.getValue());
+
+		System.out.println(" ");
+		System.out.println("#############################################");
+		System.out.println(" ");
+		
+
+		System.out.println("*************************************");
+		System.out.println("TEST CASE 3");
+		System.out.println("*************************************");
+		System.out.println("Numerator is 13 and denominator is 5");
+		RatNumGCDWithNotes test3 = new RatNumGCDWithNotes(13, 5);
+		System.out.println("Stored values toString: " + test3);
+		System.out.println("Stored values Double: " + test3.getValue());
+
+		System.out.println(" ");
+		System.out.println("#############################################");
+		System.out.println(" ");
+		
+
+		System.out.println("*************************************");
+		System.out.println("TEST CASE 4");
+		System.out.println("*************************************");
+		System.out.println("Numerator is 0 and denominator is 10");	
+		RatNumGCDWithNotes test4 = new RatNumGCDWithNotes(0, 10);
+		System.out.println("Stored values toString: " + test4);
+		System.out.println("Stored values Double: " + test4.getValue());
+
+		System.out.println(" ");
+		System.out.println("#############################################");
+		System.out.println(" ");
+		
+
+		System.out.println("*************************************");
+		System.out.println("TEST CASE 5");
+		System.out.println("*************************************");
+		System.out.println("Numerator is 10 and denominator is 10");		
+		RatNumGCDWithNotes test5 = new RatNumGCDWithNotes(10, 10);
+		System.out.println("Stored values toString: " + test5);
+		System.out.println("Stored values Double: " + test5.getValue());	
+
 	}
 	
 }
