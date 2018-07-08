@@ -24,6 +24,7 @@
  *  toString: returns the rational number as a string in the form a/b. 
 */
 
+import java.util.Scanner;
 
 public class RatNumGCDWithNotes 
 {
@@ -45,6 +46,8 @@ public class RatNumGCDWithNotes
 	{
 		numerator = 0;
 		denominator = 1;
+		//readInput();
+		simplify();
 	}
 	
 	RatNumGCDWithNotes(int origNumeratorArg, int origDenominatorArg)
@@ -65,6 +68,24 @@ public class RatNumGCDWithNotes
 	//WRITE ACCORDING TO PAGE 303 precondition/postcondition
 	//AND PAGE 327/328 JAVADOC and UML...
 	//
+	private void simplify()
+	{		
+		//this is a setter method if it changes the private instance variables
+		//this method takes origNumeratorArg and origDenominatorArg
+		//calls the getGCD method to get the GCD and 
+		//uses the GCD to reduce to simpNumerator and simpDenominator
+		readInput();
+		//System.out.println(numerator + denominator);
+		GCD = getGCD(numerator, denominator);
+		if (GCD== -1) System.out.println("ERROR CODE -1");
+		if (GCD == 0) System.out.println("Rational number with zero in the numerator");
+		else 
+		{
+		numerator = numerator/GCD;
+		denominator = denominator/GCD;
+		}
+	}
+	
 	private void simplify(int origNumeratorArg, int origDenominatorArg)
 	{		
 		//this is a setter method if it changes the private instance variables
@@ -74,6 +95,13 @@ public class RatNumGCDWithNotes
 		GCD = getGCD(origNumeratorArg, origDenominatorArg);
 		numerator = origNumeratorArg/GCD;
 		denominator = origDenominatorArg/GCD;
+	}
+	
+	private void simplify(RatNumGCDWithNotes CTO)
+	{
+		GCD = getGCD(CTO.numerator, CTO.denominator);
+		numerator = CTO.numerator/GCD;
+		denominator = CTO.denominator/GCD;
 	}
 	
 	private static int getGCD(int x, int y)
@@ -87,6 +115,7 @@ public class RatNumGCDWithNotes
 		int gCD = 0;
 		//higher level analysis of the numbers:  denominator > 0; x != y; 
 		if (y < 1) return -1;//check for denominator of 0, and if so then return error code.
+		if (x == 0) return 0;//zero in numerator is rational.
 		if (x==y) return x;//quick equality check: logical shortcut to set up next logical shortcut
 		if (Math.max(numerator, denominator) % Math.min(numerator, denominator) == 0) return Math.min(x, y);//check smaller go into larger
 
@@ -136,27 +165,57 @@ public class RatNumGCDWithNotes
 		return numerator + " / " + denominator + "\n";
 	}
 	
+	public double getValue() {
+		
+		return (double)numerator / (double)denominator;		
+	}
+	
+	public double getValue(RatNumGCDWithNotes CTO) {
+		
+		return (double)numerator / (double)denominator;		
+	}
+	
 	//PROGRAMMER'S NOTE:
 	//MANY PROGRAMMERS USE toString TO PRINT OUT ALL THE VARIABLES IN AN 
 	//OBJECT AT CERTAIN POINTS IN THEIR CODE TO SEE WHAT HAS HAPPENED WHEREEVER
 	//THE STATUS OF OBJECT VARIABLES
 	
+	/**
+	 * Reads from keyboard the numerator and denominator input
+	 */
 	public void readInput()
 	{
-	
+		numerator = -1;
+		denominator = 0;
+		Scanner keyboard = new Scanner(System.in);
+		System.out.println("Enter numerator (positive integer)");
+		while(numerator < 0)
+			{//try again
+			System.out.println("numerator must be a positive integer");
+			numerator = keyboard.nextInt();
+			}
+		System.out.println("You entered: " + numerator);
+		System.out.println("Enter a positive integer for the denominator (can't be zero)");
+		while(denominator <= 0)
+			{//try again
+			System.out.println("denominator must be an integer > 0");
+			denominator = keyboard.nextInt();
+			}		
+		System.out.println("You entered: " + denominator);
 	}
 	
-	public void writeOutput()
+	public void writeOutput(RatNumGCDWithNotes CTO)
 	{
-		
+		System.out.println("We stored your numerator and denominator as rational values: "  + CTO);
+		System.out.println("The values as primitive data type Double is: " + getValue(CTO));
 	}
 	
 	
 	public static void main(String[] args) {
 		
 		RatNumGCDWithNotes test1 = new RatNumGCDWithNotes(105, 25);
-//		System.out.println("getGCD returned: " + test1.getGCD(test1.numerator, test1.denominator));
-		System.out.println("Stored values: " + test1);
+		System.out.println("Stored values toString: " + test1);
+		System.out.println("Stored values Double: " + test1.getValue());
 	}
 	
 }
