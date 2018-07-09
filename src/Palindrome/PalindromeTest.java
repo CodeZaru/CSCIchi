@@ -24,7 +24,8 @@ public class PalindromeTest {
 
 		System.out.println("Enter phrase to be tested.");
 		String input = new java.util.Scanner(System.in).nextLine().toUpperCase();
-
+		char inputChar =' ';//try to put each character into cell
+		
 			System.out.println(input);
 
 			//create PalindromeTest array which has array and counter
@@ -33,6 +34,14 @@ public class PalindromeTest {
 
 			//add Item to array
 			test1.addItem(input);
+			
+			System.out.println("###");
+			for (int i=0; i < input.length(); i++)
+			{
+				inputChar = input.charAt(i);//input.length() -1);
+				System.out.println(inputChar);
+			}	
+			System.out.println("###");
 			
 			//test that counter icrements after adding item
 			int indexPositionTest2 = test1.countOfEntries;
