@@ -1,7 +1,5 @@
 
 public class PalindromeTest {
-
-	
 	
 	public static int MAX_SIZE = 7;
 	
@@ -36,7 +34,7 @@ public class PalindromeTest {
 			//add Item to array
 			test1.addItem(input);
 			
-			//
+			//test that counter icrements after adding item
 			int indexPositionTest2 = test1.countOfEntries;
 			
 			//print array contents at input index
