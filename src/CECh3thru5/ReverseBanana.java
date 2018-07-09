@@ -13,6 +13,8 @@ for (int i=0; i < intermediate.length(); i++)
 	reverse += intermediate.charAt(intermediate.length() -1 -i);//this is the trick to reverse but also try the down counting method
 System.out.println(reverse);
 	
+
+
 	
 	}
 
