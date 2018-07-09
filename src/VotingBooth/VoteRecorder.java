@@ -43,6 +43,8 @@ public class VoteRecorder {
 	{
 		myVoteForPresident = voteP;
 		myVoteForVicePresident = voteVP;
+		recordVotes();
+		numberOfVoters++;
 	}
 //Note: methods are normally public unless: helper method, 
 //implementation hiding, or otherwise specified.
@@ -66,34 +68,77 @@ public class VoteRecorder {
 	public static String getCurrentVotePresident()
 	{
 		return nameCandidatePresident1 + ": " + votesCandidatePresident1 + 
-				"vs" + nameCandidatePresident2  + ": " + votesCandidatePresident2;
+				" vs " + nameCandidatePresident2  + ": " + votesCandidatePresident2;
 	}
 	public static String getCurrentVoteVicePresident()
 	{
 		return nameCandidateVicePresident1 + ": " + votesCandidateVicePresident1 + 
-				"vs" + nameCandidateVicePresident2  + ": " + votesCandidateVicePresident2;
+				" vs " + nameCandidateVicePresident2  + ": " + votesCandidateVicePresident2;
 	}
 	public void getAndConfirmVotes()
 	{
-		//this seems like a readInput() type method
-		//need keyboard Scanner..
-		//1) gets an individuals votes--maybe getVotes()?
-		//2) confirms the individuals votes--maybe confirmVotes()?
-		//3) records them---maybe recordVotes()?
+		Scanner keyboard = new Scanner(System.in);
+		boolean confirm = true;
+		String PresCandidate1 = "Annie";
+		String PresCandidate2 = "Bob";
+		String VicePresCandidate1 = "John";
+		String VicePresCandidate2 = "Susan";
+		setCandidatesPresident(PresCandidate1, PresCandidate2); 
+		setCandidatesVicePresident(VicePresCandidate1, VicePresCandidate2); 
+
+		do
+		{
+		System.out.println("Your choice for President is? " + 
+				"select number \n" + 
+				"1 for " + nameCandidatePresident1 + "\n"+
+				"2 for " + nameCandidatePresident2 + "\n"+
+				"0 for neither.");
+		myVoteForPresident = keyboard.nextInt();
+
+		System.out.println("Your choice for Vice President is? " + 
+				"select number \n" + 
+				"1 for " + nameCandidateVicePresident1 + "\n"+
+				"2 for " + nameCandidateVicePresident2 + "\n"+
+				"0 for neither.");
+		myVoteForVicePresident = keyboard.nextInt();
+
+		confirm = confirmVotes();
+		}
+		while(confirm==false);
+			
+		recordVotes();
+		
 	}
-	private int getAVote(String name1, String Name2)
-	{		
-		return myVoteForPresident;
-	}
+//	private int getAVote(String voterName, String RaceVorVP)
+//	{		
+	//	String aVote = voterName.RaceVorVP+"()";
+//		return aVote;
+//	}
 	private int getVotes()
 	{
 		return myVoteForPresident + myVoteForVicePresident;
 	}
 	private boolean confirmVotes()
-	{		
-		return true;
+	{	
+		String response;
+		boolean confirm;
+		System.out.println("Referring to the lists above \n"+ 
+		"Are these the candidates for whom you intended to vote: \n " + 
+		"President: " + myVoteForPresident + 
+		"\n" +
+		"Vice President: " + myVoteForVicePresident + 		
+		"\n" +
+		"Please confrim by typing \"Y\" or \"N\"");
+		Scanner keyboard = new Scanner(System.in);
+		response = keyboard.next();
+		if (response.equalsIgnoreCase("y")) 
+			confirm = true;
+		else
+			confirm = false;
+		return confirm;
 	}
-	private void recordVotes ()
+	
+	private void recordVotes()
 	{
 		if(myVoteForPresident == 1) votesCandidatePresident1++; 
 		if(myVoteForPresident == 2) votesCandidatePresident2++; 
@@ -104,7 +149,13 @@ public class VoteRecorder {
 //this main is just a test driver, not the demo	
 public static void main(String[] args)
 {
-	
+	resetVotes();
+	VoteRecorder voter1 = new VoteRecorder();	
+	voter1.getAndConfirmVotes();
+	System.out.println("President: " + getCurrentVotePresident());
+	System.out.println("Vice President: " + getCurrentVoteVicePresident());
+	System.out.println(votesCandidatePresident1);
+
 }
 	
 	
