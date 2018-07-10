@@ -1,4 +1,4 @@
-public class SudokuPuzzleTest {
+public class SudokuPuzzleTest2 {
     private static final SudokuPuzzle2 game = new SudokuPuzzle2();
     
     private static void initializeBoard() {

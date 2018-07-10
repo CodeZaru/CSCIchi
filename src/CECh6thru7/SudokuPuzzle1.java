@@ -1,5 +1,5 @@
 
-public class SudokuPuzzle {
+public class SudokuPuzzle1 {
 	
 	private int [][] board = new int [9][9];
 	private boolean [][] start = new boolean[9][9];
@@ -9,7 +9,7 @@ public class SudokuPuzzle {
 // this basically allocates 9 bytes of memory in your RAM	
 //row by column, so [0][8] is last cell of 1st row and [1][8] is the last cell of second row.
 	
-	SudokuPuzzle() {//SO NOTE THAT EVEN IF WE TAKE OUT THE ASTRIX SECTION, THE ARRAYS STILL PRINT
+	SudokuPuzzle1() {//SO NOTE THAT EVEN IF WE TAKE OUT THE ASTRIX SECTION, THE ARRAYS STILL PRINT
 		//initialize to 0 the array, all rows in column 0
 		//for(int row = 0; row < 9; row++)
 		//	board [row][0] = 0;

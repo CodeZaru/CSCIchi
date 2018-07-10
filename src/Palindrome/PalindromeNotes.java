@@ -1,11 +1,13 @@
+/*
 import java.util.Scanner;
 
-public class PalindromeDetector {
+
+public class PalindromeNotes {
 
 	public static void main(String[] args) {
 
-//		int[] frequency = new int[26];
-//		int index = 0;
+		//int[] frequency = new int[26];
+		//int index = 0;
 
 		System.out.println("type a sentence ending in a period");
 		String input = new java.util.Scanner(System.in).nextLine().toUpperCase();
@@ -14,7 +16,7 @@ public class PalindromeDetector {
 		// a time and loops through
 		
 		
-/*KS Note: find the period to know the index range
+KS Note: find the period to know the index range
  * then refer to page 525 for an interchange sorting algorithm.
  * but really just create an inner and outer for loop
  * the outer loop takes the first letter/character like the repeating number exercise
@@ -23,7 +25,7 @@ public class PalindromeDetector {
  * also use the reverse banana for reading input
  * but maybe eliminate spaces and 
  * ALSO USED variable ref p522 Paritally filled arrays..
- */
+
 		
 		
 		
@@ -50,3 +52,4 @@ public class PalindromeDetector {
 	}
 
 }
+**/

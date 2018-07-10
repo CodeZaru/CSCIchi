@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="RPSjava/|CECh3thru5/|timeElapse/|SecretCodeASCIIDecoder/|KlingonOx/|EdocARGame/|CECh6thru7/|RatNumGCD/|VotingBooth/|Palindrome/" kind="src" path="src"/>
+	<classpathentry excluding="RPSjava/|CECh3thru5/|timeElapse/|SecretCodeASCIIDecoder/|KlingonOx/|EdocARGame/|CECh6thru7/|RatNumGCD/|VotingBooth/|Palindrome/|Sudoku/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/RPSjava"/>
 	<classpathentry kind="src" path="src/CECh3thru5"/>
 	<classpathentry kind="src" path="src/timeElapse"/>
@@ -16,5 +16,6 @@
 	<classpathentry kind="src" path="src/RatNumGCD"/>
 	<classpathentry kind="src" path="src/VotingBooth"/>
 	<classpathentry kind="src" path="src/Palindrome"/>
+	<classpathentry kind="src" path="src/Sudoku"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
