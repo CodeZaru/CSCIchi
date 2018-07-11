@@ -71,7 +71,8 @@ public class Rational {
 	
 	
 	public String toString() {
-		//we are doing an over-write of what java already provides us with toString, so that we get the output as we want it.
+		//we are doing an over-write of what java already provides us with toString, 
+		//so that we get the output as we want it.
 		//return " ";//simple version
 		//toString tells you what class the object is and then @ "at" and the memory location
 		//Also went back to the Temperature method 
