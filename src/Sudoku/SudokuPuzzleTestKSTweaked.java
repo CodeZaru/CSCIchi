@@ -1,4 +1,4 @@
-public class SudokuPuzzleTest {
+public class SudokuPuzzleTestKSTweaked {
     private static final SudokuPuzzle game = new SudokuPuzzle();
     
     private static void initializeBoard() {
@@ -32,7 +32,12 @@ public class SudokuPuzzleTest {
         game.addInitial(8, 0, 5);        
         game.addInitial(8, 3, 9); 
     }
-
+    //KSNotes:
+    //testToString is a test that actually takes a typed out String as an array
+    //defines the typed out array as the expected result given 
+    //a sudoku add guess scenario and then checks 
+    //if the toString method from the real program which shows the 
+    //same "array-string" as the "answer key"
     private static boolean testToString() {
         String answer = "1 2 3 4 9 7 8 6 5 \n" +
                         "4 5 9 _ _ _ _ _ _ \n" +

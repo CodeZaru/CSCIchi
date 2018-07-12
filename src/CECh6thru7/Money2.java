@@ -3,7 +3,7 @@ import java.util.Scanner;
  * Class representing nonnegative amounts of money, 
  * such as $100, $41.99, $0.05. 
  * */ 
-public class Money 
+public class Money2
 { 
 	private long dollars; 
 	private long cents; 
@@ -36,7 +36,7 @@ public class Money
 			cents = allCents % 100; 
 		} 
 	} 
-	public void set(Money moneyObject) 
+	public void set(Money2 moneyObject) 
 	{ 
 		this.dollars = moneyObject.dollars; 
 		this.cents = moneyObject.cents; 
@@ -102,9 +102,9 @@ public class Money
 	/**
 	 * Returns n times the calling object.
 	 */
-	public Money times(int n) 
+	public Money2 times(int n) 
 	{
-		Money product = new Money();
+		Money2 product = new Money2();
 		product.cents = n * cents;
 		long carryDollars = product.cents / 100;
 		product.cents = product.cents % 100;
@@ -114,9 +114,9 @@ public class Money
 	/**
 	 * Returns the sum of the calling object and the argurmnet.
 	 */
-	public Money add(Money otherAmount)
+	public Money2 add(Money2 otherAmount)
 	{
-		Money sum = new Money();
+		Money2 sum = new Money2();
 		sum.cents = this.cents + otherAmount.cents;
 		long carryDollars = sum.cents / 100;
 		sum.cents = sum.cents % 100;
