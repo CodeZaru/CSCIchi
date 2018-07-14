@@ -1,5 +1,5 @@
 /*
-public class Test1 {
+public class Test1Q {
 
 	public static void main(String[] args) {
 		
