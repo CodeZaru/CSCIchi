@@ -46,9 +46,10 @@ for (int oForIndex = 0; oForIndex < numbers.length; oForIndex++)
 		currentSmallestIntIndex = iForIndex;
 		}
 //END INNER FOR LOOP
-	//int newSmallestIntInRange = numbers[]
+
 	System.out.println("##########################################################################");
 	System.out.println("step 2-search the array for the smallest int and it's index (via for loop)");
+	System.out.println("and print swap summary (swap # " + (currentArrayIndexStart+1) + " of 10)");	
 	System.out.println("##########################################################################");
 	System.out.println("The smallest Int is: " + currentSmallestIntInRange + " at index [" + currentSmallestIntIndex + "].");
 	System.out.println(currentSmallestIntInRange + " was at index[" + currentSmallestIntIndex + "], but swapped with " + numbers[currentArrayIndexStart] + " which was the number at the lowest index in current range: numbers[" + currentArrayIndexStart + "].");
