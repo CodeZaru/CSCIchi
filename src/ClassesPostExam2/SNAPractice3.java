@@ -3,8 +3,8 @@ public class SNAPractice3 {
 //Interchange Sorting Algorithm:  any sorting algorithm that swaps, or interchanges, values.
 	public static void main(String[] args) {
 		// 1st step: define and print an array of random integers
-		// 2nd step find the smallest integer
-		// 3rd step swap smallest to first index place
+		// 2nd step find the smallest integer and its index (inner loop function)
+		// 3rd step swap smallest to first index place (outer loop function)
 		// 4th step create a nested loop construct that sorts the whole array
 		// 5th step print results
 		
@@ -25,8 +25,10 @@ public class SNAPractice3 {
 //Outer For Loop Block Begin		
 //KSNOTE: the LineOfCode(LOC) below is change 1 or x to go from single swap to full array sort via iterative swap
 		for (int oForIndex = 0; oForIndex < numbers.length; oForIndex++) {		
-		
-//2nd step find the smallest integer
+
+//THE OUTER LOOP INDEX DYNAMICALLY DEFINES AND CHANGES THE INNER LOOP INDEX INIITIAL VALUE (COULD SEE THAT WE COULD ALSO CHANGE THE LIMIT DYNAMICALLY IN THIS WAY IF IT SERVED A PURPOSE.
+			
+//2nd step find the smallest integer and its index in array (search an array from a defined starting and ending index, 
 //BEGIN Inner "For" Loop
 //KSNOTE: next three LOCs are tweaked from original single swap version of code in order to HOOK the inner For Loop into the outer For Loop
 		int smallestV2 = numbers[oForIndex];//Tweak1: hook into outer loop (numbers[HOOK]) by creating dynamic index change "numbers[0]" to "numbers[oforIndex]" 
@@ -39,7 +41,7 @@ public class SNAPractice3 {
 				smallestV2 = numbers [iForIndex];		
 				origSmallestIndex = iForIndex;
 			}//end "if" block
-		}//END Inner "For" block
+		}//END Inner "For" block--Once done with task, pop back out to the outer loop, once outer is finished, iterate back into the inner loop until outer limit is reached.
 		
 		System.out.println("###############################");
 		System.out.println("Step 2 - print swap summary");
