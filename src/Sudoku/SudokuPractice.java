@@ -85,9 +85,11 @@ public class SudokuPractice {
 				return false;
 		return true;				
 	}
-	
-	
-	
+
+//#####################################################
+//#######HERE:
+//Write the okSingleRow() with my naming conventions, AND USEING THE NOTES IN SUDOKUPUZZLESOLUTIONSKSPRACTICE FILE....	
+//#####################################################	
 	
 	
 	
