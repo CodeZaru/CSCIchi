@@ -1,5 +1,11 @@
+//the top half of this class is a bunch of methods being defined, and
+//the bottom half has a main method...
 public class SudokuPuzzleTestKSTweaked {
-    private static final SudokuPuzzle game = new SudokuPuzzle();
+	
+//it looks like this is a declared constant
+//if so, should we do all caps?
+//still it is hard to follow how this object was instantiated...
+    private static final SudokuPuzzleSolutionKSPractice game = new SudokuPuzzleSolutionKSPractice();
     
     private static void initializeBoard() {
         game.addInitial(0, 0, 1);
@@ -37,7 +43,7 @@ public class SudokuPuzzleTestKSTweaked {
     //defines the typed out array as the expected result given 
     //a sudoku add guess scenario and then checks 
     //if the toString method from the real program which shows the 
-    //same "array-string" as the "answer key"
+    //same "array-string" as the "answer key" does.
     private static boolean testToString() {
         String answer = "1 2 3 4 9 7 8 6 5 \n" +
                         "4 5 9 _ _ _ _ _ _ \n" +
@@ -48,7 +54,10 @@ public class SudokuPuzzleTestKSTweaked {
                         "8 _ _ _ _ _ _ _ _ \n" +
                         "7 _ _ _ _ _ _ _ _ \n" +
                         "5 _ _ 9 _ _ _ _ _ \n";
-
+//analyze the return statement: to string of the game object passed into a 
+//comparison function of the string object that assigned to the variable "answer"
+//and had been manually defined above (a concatenated string with line breaks to  
+//simulate the Sudoku array), and the evaluation is all done in the return statement.
         return (answer.equalsIgnoreCase(game.toString()));
     }
     
@@ -94,51 +103,57 @@ public class SudokuPuzzleTestKSTweaked {
         return (answer.equalsIgnoreCase(game.toString()));
     }     
     
+//this is a method definition that is passed in a boolean array (a[]) and it returns 
+//all the array values, but what does  !a[4] !a[8] actually mean/do... 
+//(note: the array has an assumed size, the sudoku board length).
     private static boolean testGetAllowedValues(boolean a[]) {
         return a[0] && a[1] && a[2] && a[3] && !a[4] && a[5] && a[6] && a[7] && !a[8];
     }
-    
+//MAIN METHOD STARTS HERE....    
     public static void main(String[] args) {
         int grade = 0;
         
         initializeBoard();
         
         System.out.println(game);
-        
+//getValueIn is a simple getter method the returns value at given array index        
         if (game.getValueIn(1, 1) == 5)
             grade += 5;
         else
             System.out.println("getValueIn(r,c) test failed");
-        
+//confirms that to string was done correctly        
         if (testToString()) 
             grade += 5;
         else
             System.out.println("toString() test failed");
-        
+//testAddGuess1() test tries to add a guess (value to array index) that depends on boolean flag states        
         game.addGuess(2, 3, 5);
         if (testAddGuess1()) 
             grade += 5;
         else
             System.out.println("addGuess(r,c,v) test 1 failed");        
-        
+//testAddGuess2() test tries to add a guess (value to array index) that depends on boolean flag states        
         game.addGuess(2, 2, 5);
         if (testAddGuess2()) 
             grade += 5;
         else
             System.out.println("addGuess(r,c,v) test 2 failed");         
-        
+//testAddGuess3() test tries to add a guess (value to array index) that depends on boolean flag states        
         game.addGuess(2, 4, 1);
         if (testAddGuess3()) 
             grade += 10;
         else
             System.out.println("addGuess(r,c,v) test 3 failed");         
-        
+ //tests reset(), by re-running the first toString test above, after running game.reset()       
         game.reset();
         if (testToString())
             grade += 10;
         else
             System.out.println("reset() test failed");
-        
+//tests the game.getAllowedValues method by passing the game object method call and hence it's results
+//to the testGetAllowedValues(), which appears to only apply to one cell/array index at a time
+//so if I am correct this is saying what values can be used at coordinates 8, 8.
+//the answer that it uses to compare is a visual/manual analysis of expected results for cell 8, 8.        
         if (testGetAllowedValues(game.getAllowedValues(8, 8)))
             grade += 10;
         else
