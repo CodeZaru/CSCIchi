@@ -68,7 +68,7 @@ public class SudokuPractice {
 //it places the value into the coordinates
 	public void addGuess(int row, int col, int value) 
 	{
-	if(!start[row][col] && getAllowedValues(row, col)[value - 1])
+	if(!start[row][col])// && getAllowedValues(row, col)[value - 1])
 		board[row][col] = value;				
 	}
 	//
@@ -86,11 +86,21 @@ public class SudokuPractice {
 		return true;				
 	}
 
-//#####################################################
-//#######HERE:
-//Write the okSingleRow() with my naming conventions, AND USEING THE NOTES IN SUDOKUPUZZLESOLUTIONSKSPRACTICE FILE....	
-//#####################################################	
-	
+	private boolean okSingleRow(int row) 
+	{
+		boolean result = false;
+		for (int oForIndexPCtrl = 0;  oForIndexPCtrl < 9; oForIndexPCtrl++)
+			for (int iForIndexRCtrl = oForIndexPCtrl+1; iForIndexRCtrl < 9; iForIndexRCtrl++)
+				if ((board[row][oForIndexPCtrl] == board[row][iForIndexRCtrl]) && (board[row][oForIndexPCtrl] != 0))
+				{
+					System.out.println("oForIndexPCtrl " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl " + board[row][iForIndexRCtrl]);
+					result = false;//return false;					
+				}else {
+					System.out.println("oForIndexPCtrl " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl " + board[row][iForIndexRCtrl]);
+		result = true;//return true;
+				}
+		return result;
+	}
 	
 	
 	
@@ -147,7 +157,11 @@ public class SudokuPractice {
 		//if we comment out the toString method completely, then we see the objects class
 		//and memory location
 		System.out.println(game.toString2());
-		  
+		
+		boolean testOkSingleRow = game.okSingleRow(0);
+		System.out.println(testOkSingleRow);
+		
+		
 	}
 	
 }

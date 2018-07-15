@@ -35,11 +35,11 @@ for (int oForIndex = 0; oForIndex < numbers.length; oForIndex++)
 	
 //step 2-search the array for the smallest int and it's index (via for loop) and set to vairables--this is the inner loop
 	
-	int currentArrayIndexStart = oForIndex;//When add outer loop, change from " = 0" to " = oForIndex"...and note that obviously redundant, but for the sake of communicating concepts...
+	int currentArrayIndexStart = oForIndex;//When add outer loop, change from " = 0" to " = oForIndex"...maybe could make this +1 on the index value... and note that obviously redundant, but for the sake of communicating concepts...
 	int currentSmallestIntInRange = numbers[currentArrayIndexStart];
 	int currentSmallestIntIndex = currentArrayIndexStart;
 //BEGIN INNER FOR LOOP
-	for (int iForIndex = currentArrayIndexStart; iForIndex < numbers.length; iForIndex++)
+	for (int iForIndex = currentArrayIndexStart+1; iForIndex < numbers.length; iForIndex++)
 		if(currentSmallestIntInRange > numbers[iForIndex])
 		{
 		currentSmallestIntInRange = numbers[iForIndex];

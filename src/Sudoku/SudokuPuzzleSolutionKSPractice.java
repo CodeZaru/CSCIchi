@@ -84,12 +84,13 @@ public class SudokuPuzzleSolutionKSPractice {
         return true;
     }
 //"okSingleRow(int row)" is an interesting "REPEAT TEST" type of nested loop in that it takes "row" as arg
+//passes it thru three two nested for loops and into an "if" statement three layers deep
 //and uses the row as the row index for the multiD sudoku array, hence board[row][]
 //The loops are focused on the columns only, and outer index&value are each compared with all the inner indexes/values 
 //the outer loop starts an index "i" at [0], and this is used as one col coordinate against which all the inner 
 //column coordinates are compared as they are iterated thru, and then the code pops back out to the outer but next col 
-//and back to inner loop, this is done all the way througheach col of the outer loop (so what is the math for # of iterations that is..) 
-//the inner loop starts an "relative" index "j" at [i+1], and will not iterate even 9 times..
+//and back to inner loop, this is done all the way through each col of the outer loop (so what is the math for # of iterations that is..) 
+//the inner loop starts an "relative" index "j" at [i+1], and will not iterate even 9 times the first round..
 //Like the Sorting Interchange Algorithm's nested loops, each time the outer loop increments one, the inner loop
 //index range is decreased so the next iteration is just of the remaining range of indexes (so 1stX = 8 iteration but 2ndX = only 7 then 6 and so forth..
 //I'll change the naming convention to my "oForIndex" and "iForIndex" technique, but might add concept descriptor 
