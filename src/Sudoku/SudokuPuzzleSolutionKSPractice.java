@@ -64,19 +64,19 @@ public class SudokuPuzzleSolutionKSPractice {
         if (!start[row][col] && getAllowedValues(row, col)[value - 1])
             board[row][col] = value;
     }
-//Doesn't look like this method is being used in the test program..
+//Doesn't look like this method is being used in the test program with the current code state..
 //need to look at the problem description and see how to put it to use
 //basically just calls three methods and returns affirmative boolean if
 //all three methods return affirmative 
     public boolean checkPuzzle() {
         return okRows() && okCols() && okSubgroups();
     }
-//Doesn't look like this method is being used in the test program..
+//Doesn't look like this method is being used in the test program, but it is used in checkPuzzle().
 //need to look at the problem description and see how to put it to use
 //"okRows" method works in combination with "okSingleRow" method.
 //"okRows" iterates through all the rows and calls the okSingleRow()
 //and returns false if (!okSingleRow)
-
+//looks like "okRows() was created as a final check..not a method run regularly..
     private boolean okRows() {
         for (int row = 0; row < 9; row++)
             if (!okSingleRow(row))

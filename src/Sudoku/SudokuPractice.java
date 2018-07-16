@@ -93,16 +93,57 @@ public class SudokuPractice {
 			for (int iForIndexRCtrl = oForIndexPCtrl+1; iForIndexRCtrl < 9; iForIndexRCtrl++)
 				if ((board[row][oForIndexPCtrl] == board[row][iForIndexRCtrl]) && (board[row][oForIndexPCtrl] != 0))
 				{
-					System.out.println("oForIndexPCtrl " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl " + board[row][iForIndexRCtrl]);
+					System.out.println("okSingleRow Method (return false): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[row][iForIndexRCtrl]);
 					result = false;//return false;					
 				}else {
-					System.out.println("oForIndexPCtrl " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl " + board[row][iForIndexRCtrl]);
-		result = true;//return true;
+					System.out.println("okSingleRow Method (return true): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[row][iForIndexRCtrl]);
+					result = true;//return true;
 				}
+		System.out.println("okSingleRow Final Result= " + result);
+		return result;
+	}
+	//okCols() like okRows() basically a For Loop that calls okSingleRow/Col
+	//and checks to see if the boolean value returned is true
+	//if !ok or in other words !true, then a false FLAG is set
+	//this logic operator/false FLAG has implications for user updates
+	//if the false FLAG is set, the user can't update..  In my version, I'll try to return to the user a hint of 
+	//which logic test got flagged.
+	private boolean okCols() 
+	{
+		for (int col = 0; col < 9; col++)
+			if (!okSingleCol(col))
+				return false;
+		return true;
+	}
+	private boolean okSingleCol(int col)
+	{
+		boolean result = false;
+		for (int oForIndexPCtrl = 0; oForIndexPCtrl < 9; oForIndexPCtrl++)
+			for (int iForIndexRCtrl = oForIndexPCtrl+1; iForIndexRCtrl < 9; iForIndexRCtrl++)
+				if((board[oForIndexPCtrl][col] == board[iForIndexRCtrl][col]) && (board[oForIndexPCtrl][col] != 0))
+				{
+					System.out.println("okSingleCol Method (return false): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[oForIndexPCtrl][col] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[iForIndexRCtrl][col]);
+					result = false;
+				} else {
+					System.out.println("okSingleCol Method (return true): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[oForIndexPCtrl][col] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[iForIndexRCtrl][col]);
+					result = true;
+				}
+		System.out.println("okSingleCol Final Result= " + result);
 		return result;
 	}
 	
-	
+	//need to create from scratch later
+    private int[] getSingleSubgroup(int row, int col) {
+        int [] singleArray = new int[9];
+
+        for (int oForIndexPCtrl = 0; oForIndexPCtrl < 3; oForIndexPCtrl++)
+            for (int iForIndexRCtrl = 0; iForIndexRCtrl < 3; iForIndexRCtrl++) 
+            {
+                singleArray[oForIndexPCtrl * 3 + iForIndexRCtrl] = board[row / 3 * 3 + oForIndexPCtrl][col / 3 * 3 + iForIndexRCtrl];
+				System.out.println("getSingleSubgroup Method (return array): singleArray[" + ((oForIndexPCtrl * 3)+iForIndexRCtrl) + "] is assigned board["+(row / 3 * 3)+ " + " + oForIndexPCtrl + " or " + ((row / 3 * 3) + oForIndexPCtrl) +"]["+(col / 3 * 3)+ " + " + iForIndexRCtrl + " or " + ((col / 3 * 3) + iForIndexRCtrl)  +"] = " + board[(row / 3 * 3) + oForIndexPCtrl][(col / 3 * 3) + iForIndexRCtrl]);
+            }
+        return singleArray;
+    }
 	
 	
    public boolean[] getAllowedValues(int row, int col) 
@@ -159,9 +200,18 @@ public class SudokuPractice {
 		System.out.println(game.toString2());
 		
 		boolean testOkSingleRow = game.okSingleRow(0);
-		System.out.println(testOkSingleRow);
+//		System.out.println(testOkSingleRow);
 		
-		
+		boolean testOkSingleCol = game.okSingleCol(0);
+//		System.out.println(testOkSingleCol);
+				
+		int[] testGetSingleSubgroup = game.getSingleSubgroup(2, 3);
+		System.out.println("######################################################################################################");
+		int[] test2GetSingleSubgroup = game.getSingleSubgroup(0, 0);
+		System.out.println("######################################################################################################");
+		int[] test3GetSingleSubgroup = game.getSingleSubgroup(8, 8);
+
+	
 	}
 	
 }
