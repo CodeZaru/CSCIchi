@@ -205,9 +205,9 @@ public class SudokuPractice {
 		boolean testOkSingleCol = game.okSingleCol(0);
 //		System.out.println(testOkSingleCol);
 				
-		int[] testGetSingleSubgroup = game.getSingleSubgroup(2, 3);
+		int[] testGetSingleSubgroup = game.getSingleSubgroup(0, 0);
 		System.out.println("######################################################################################################");
-		int[] test2GetSingleSubgroup = game.getSingleSubgroup(0, 0);
+		int[] test2GetSingleSubgroup = game.getSingleSubgroup(3, 5);
 		System.out.println("######################################################################################################");
 		int[] test3GetSingleSubgroup = game.getSingleSubgroup(8, 8);
 
