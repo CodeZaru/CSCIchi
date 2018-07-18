@@ -192,19 +192,49 @@ public class SudokuPractice {
 	        game.addInitial(8, 0, 5);        
 	        game.addInitial(8, 3, 9); 
 	 
-		
-		
+	    System.out.println();    
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF FIRST toString method*********************");
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
 		System.out.println(game.toString());//toString is lets us output objects visually 
 		//if we comment out the toString method completely, then we see the objects class
 		//and memory location
-		System.out.println(game.toString2());
+	    System.out.println();
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF SECOND toString2 method*******************");
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+
 		
+		System.out.println(game.toString2());
+	    System.out.println();
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF okSingleRow method************************");
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+
 		boolean testOkSingleRow = game.okSingleRow(0);
 //		System.out.println(testOkSingleRow);
+	    System.out.println();
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF okSingleCol method************************");
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
 		
 		boolean testOkSingleCol = game.okSingleCol(0);
 //		System.out.println(testOkSingleCol);
-				
+	    System.out.println();
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF getSingleSubgroup method******************");
+		System.out.println("******************************************************************");
+		System.out.println("******************************************************************");
+		
 		int[] testGetSingleSubgroup = game.getSingleSubgroup(0, 0);
 		System.out.println("######################################################################################################");
 		int[] test2GetSingleSubgroup = game.getSingleSubgroup(3, 5);
