@@ -139,8 +139,24 @@ public class SudokuPractice {
         for (int oForIndexPCtrl = 0; oForIndexPCtrl < 3; oForIndexPCtrl++)
             for (int iForIndexRCtrl = 0; iForIndexRCtrl < 3; iForIndexRCtrl++) 
             {
-                singleArray[oForIndexPCtrl * 3 + iForIndexRCtrl] = board[row / 3 * 3 + oForIndexPCtrl][col / 3 * 3 + iForIndexRCtrl];
-				System.out.println("getSingleSubgroup Method (return array): singleArray[" + ((oForIndexPCtrl * 3)+iForIndexRCtrl) + "] is assigned board["+(row / 3 * 3)+ " + " + oForIndexPCtrl + " or " + ((row / 3 * 3) + oForIndexPCtrl) +"]["+(col / 3 * 3)+ " + " + iForIndexRCtrl + " or " + ((col / 3 * 3) + iForIndexRCtrl)  +"] = " + board[(row / 3 * 3) + oForIndexPCtrl][(col / 3 * 3) + iForIndexRCtrl]);
+            	//CodeSummary: we are taking multiDimensional arrays and transforming them into a singleDimensional array.
+            	//We are defining indexes via bracketed equations.
+            	//left-hand side assigns to "singleArray" an index value derived from an equation that has two parts
+            	//or two inputs added together: [oForIndexPCtrl * 3 + iForIndexRCtrl]
+            	//part1: oForIndexPCtrl * 3 is tied to the  outer loop and will result in (0 or 1 or 2) * 3 which equals 0 or 3 or 6 
+            	//part2: iForIndexRCtrl is tied to the  inner loop and will result in 0 or 1 or 2.
+            	//Since the outer loop runs three times, each time iterating thru the inner loop of three iterations, 
+            	//the inner loop's code runs a total or 9 times 
+                //interestingly, the left side index value is updated via the above equation, but the value assigned to 
+            	//each of the 9 indexes is set by the right side of the assignment statement.
+            	//The right side of the equation = board[row / 3 * 3 + oForIndexPCtrl][col / 3 * 3 + iForIndexRCtrl] is determined by its coordinates
+            	//the coordinates are two indexes are the result of two equations that define an index for a row and for a column
+            	//the first index determines the row based on a row argument passed into an equation that also includes the outer 
+            	//loop's index (this might mean that in general the outer loop is associated with the "row" concept of a record).
+            	//Same as the left side of the assigment statement, any references to the inner and outer loop indexes result in 0 or 1 or 2
+            	//so this can be rewritten as board[row / 3 * 3 + (0 or 1 or 2)][col / 3 * 3 + (0 or 1 or 2)];
+            	singleArray[oForIndexPCtrl * 3 + iForIndexRCtrl] = board[row / 3 * 3 + oForIndexPCtrl][col / 3 * 3 + iForIndexRCtrl];
+				System.out.println("getSingleSubgroup Method (return array): singleArray[" + ((oForIndexPCtrl * 3)+iForIndexRCtrl) + "] is assigned board["+(row / 3 * 3)+ " + " + oForIndexPCtrl + " or index row " + ((row / 3 * 3) + oForIndexPCtrl) +"]["+(col / 3 * 3)+ " + " + iForIndexRCtrl + " or index col " + ((col / 3 * 3) + iForIndexRCtrl)  +"] = " + board[(row / 3 * 3) + oForIndexPCtrl][(col / 3 * 3) + iForIndexRCtrl]);
             }
         return singleArray;
     }
@@ -193,53 +209,191 @@ public class SudokuPractice {
 	        game.addInitial(8, 3, 9); 
 	 
 	    System.out.println();    
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
-		System.out.println("NOTE:     TEST-PRINT OF FIRST toString method*********************");
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
+		System.out.println("*********************************************************************");
+		System.out.println("*********************************************************************");
+		System.out.println("NOTE: TEST-PRINT OF FIRST toString(): the current values on the board");
+		System.out.println("*********************************************************************");
+		System.out.println("*********************************************************************");
 		System.out.println(game.toString());//toString is lets us output objects visually 
 		//if we comment out the toString method completely, then we see the objects class
 		//and memory location
 	    System.out.println();
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
-		System.out.println("NOTE:     TEST-PRINT OF SECOND toString2 method*******************");
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
+		System.out.println("*********************************************************************");
+		System.out.println("*********************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF SECOND toString2 method: the Boolean Flags");
+		System.out.println("*********************************************************************");
+		System.out.println("*********************************************************************");
 
 		
 		System.out.println(game.toString2());
 	    System.out.println();
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
-		System.out.println("NOTE:     TEST-PRINT OF okSingleRow method************************");
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF okSingleRow method***********************************************************************");
+		System.out.println("1) Takes 1st value in array and compares against each of the remaing values ");
+		System.out.println("   in the specified row, then repeats for 2nd value in the row and so forth");
+	    System.out.println();
+		System.out.println("2) Each outer loop increment passes control to the inner loop for a complete");
+		System.out.println("   set of iterations thru the inner loop index, and then pops back to outer loop"); 
+	    System.out.println();
+		System.out.println("3) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
+		System.out.println("   by hooking into the inner loop's starting index value via variabe assignment of the outer loop's index ");
+		System.out.println("   to the inner loops index. Hences the inner loop iteration count decreases as the loops work together");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
 
 		boolean testOkSingleRow = game.okSingleRow(0);
 //		System.out.println(testOkSingleRow);
 	    System.out.println();
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
-		System.out.println("NOTE:     TEST-PRINT OF okSingleCol method************************");
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
-		
-		boolean testOkSingleCol = game.okSingleCol(0);
-//		System.out.println(testOkSingleCol);
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF okSingleCol method***********************************************************************");
+		System.out.println("1) Takes 1st value in array and compares against each of the remaing values ");
+		System.out.println("   in the specified col, then repeats for 2nd value in the col and so forth");
 	    System.out.println();
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
-		System.out.println("NOTE:     TEST-PRINT OF getSingleSubgroup method******************");
-		System.out.println("******************************************************************");
-		System.out.println("******************************************************************");
+		System.out.println("2) Each outer loop increment passes control to the inner loop for a complete");
+		System.out.println("   set of iterations thru the inner loop index, and then pops back to outer loop"); 
+	    System.out.println();
+		System.out.println("3) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
+		System.out.println("   by hooking into the inner loop's starting index value via variabe assignment of the outer loop's index ");
+		System.out.println("   to the inner loops index. Hences the inner loop iteration count decreases as the loops work together");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+
+		boolean testOkSingleCol = game.okSingleCol(0);
+
 		
-		int[] testGetSingleSubgroup = game.getSingleSubgroup(0, 0);
+		
+	    System.out.println();
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF getSingleSubgroup method*****************************************************************");
+		System.out.println("CodeSummary: we are taking multiDimensional arrays and transforming them into a singleDimensional array.");
+		System.out.println("1)  We are defining indexes via bracketed equations. left-hand side assigns to \"singleArray\" an index value ");
+		System.out.println("    derived from an equation that has two parts, or two inputs added together: [oForIndexPCtrl * 3 + iForIndexRCtrl]");
+		System.out.println();
+		System.out.println("   PART1: oForIndexPCtrl * 3 is tied to the  outer loop and will result in (0 or 1 or 2) * 3 which equals 0 or 3 or 6 ");
+		System.out.println("   PART2: iForIndexRCtrl is tied to the  inner loop and will result in 0 or 1 or 2.");
+	    System.out.println();
+	    System.out.println("Interestingly, the left side index value is generated/updated via the above two-part equation, but the value assigned to");
+	    System.out.println("each of the 9 indexes is set by the right side of the assignment statement.");
+	    System.out.println();
+	    System.out.println("2) The right side of the equation is = board[row / 3 * 3 + oForIndexPCtrl][col / 3 * 3 + iForIndexRCtrl]");
+		System.out.println("   Simplified w/ possible loopValues = board[(0 or 1 or 2) * 3 + (0 or 1 or 2)][(0 or 1 or 2) * 3 + (0 or 1 or 2)]"); 
+		System.out.println("   SEE ITEM 3 for more details");
+		System.out.println();
+		System.out.println("3) Notice the patterns in the Output to the console, which shed light on the equations used on the right hand side: ");
+		System.out.println("   i)   the args row and col result in one value each that remains the same thru all 9 loop iterations, or for ");
+		System.out.println("		the whole subGroup array. IMPORTANTLY: this is due to int math, where the decimals are dropped/truncated.");
+		System.out.println("		THUS TRANSITIONS to the next SUPER ROW/COL are at factors of 3.");
+		System.out.println("   ii)  the outer loop values iterate by repeating the same index value the inner-loop index number of times, ");
+		System.out.println("        repeating after each full cycle of the inner loop");
+		System.out.println("   iii) the inner loop values iterate repeating in sequential pattern, repeating the pattern outer index number of times");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+
+		
+		
+	    System.out.println();
 		System.out.println("######################################################################################################");
-		int[] test2GetSingleSubgroup = game.getSingleSubgroup(3, 5);
+		System.out.println("##### SUPER ROW 1 (Super Cols 1/2/3)##################################################################");
+		System.out.println("#NOTE: int data type division truncates right of decimal, which enables us to get super rows and cols#");
 		System.out.println("######################################################################################################");
-		int[] test3GetSingleSubgroup = game.getSingleSubgroup(8, 8);
+
+		
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 1 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[0][0]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test00GetSingleSubgroup = game.getSingleSubgroup(0, 0);
+
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 2 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[1][4]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test11GetSingleSubgroup = game.getSingleSubgroup(1, 4);
+
+		System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 3 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[2][8]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+		
+		int[] test22GetSingleSubgroup = game.getSingleSubgroup(2, 8);
+
+	    System.out.println();
+		System.out.println("######################################################################################################");
+		System.out.println("##### SUPER ROW 2 (Super Cols 1/2/3)##################################################################");
+		System.out.println("#NOTE: int data type division truncates right of decimal, which enables us to get super rows and cols#");
+		System.out.println("######################################################################################################");
+		
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 4 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[3][2]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test33GetSingleSubgroup = game.getSingleSubgroup(3, 2);
+
+		System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 5 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[4][3]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+		
+		int[] test44GetSingleSubgroup = game.getSingleSubgroup(4, 3);
+
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 6 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[5][7]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test55GetSingleSubgroup = game.getSingleSubgroup(5, 7);
+
+	    System.out.println();
+		System.out.println("######################################################################################################");
+		System.out.println("##### SUPER ROW 3 (Super Cols 1/2/3)##################################################################");
+		System.out.println("#NOTE: int data type division truncates right of decimal, which enables us to get super rows and cols#");
+		System.out.println("######################################################################################################");
+
+
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 7 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[6][1]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test66GetSingleSubgroup = game.getSingleSubgroup(6, 1);
+
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 8 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[7][5]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test77GetSingleSubgroup = game.getSingleSubgroup(7, 5);
+
+	    System.out.println();
+		System.out.println("**********************************************************************************************************************************************************");
+		System.out.println("******************************************SUBGROUP 9 OF 9 (LEFT TO RIGHT AND TOP TO BOTTOM, THREE ACROSS AND THREE DOWN***********************************");
+		System.out.println("******************************************NOTE: TEST-PRINT OF for board[row][col] args board[8][8]********************************************************");
+		System.out.println("*************************************passed into board [row / 3 * 3 + (Outer Loop 0 or 1 or 2)][col / 3 * 3 + (Inner Loop 0 or 1 or 2)]*******************");
+		System.out.println("**********************************************************************************************************************************************************");
+
+		int[] test88GetSingleSubgroup = game.getSingleSubgroup(8, 8);
 
 	
 	}
