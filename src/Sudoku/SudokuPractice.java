@@ -155,6 +155,9 @@ public class SudokuPractice {
             	//loop's index (this might mean that in general the outer loop is associated with the "row" concept of a record).
             	//Same as the left side of the assigment statement, any references to the inner and outer loop indexes result in 0 or 1 or 2
             	//so this can be rewritten as board[row / 3 * 3 + (0 or 1 or 2)][col / 3 * 3 + (0 or 1 or 2)];
+            	//the args row and col result in one value each that remains the same thru all 9 loop iterations, or for 
+            	//the whole subGroup array. IMPORTANTLY: this is due to int math, where the decimals are dropped/truncated.
+            	//THUS TRANSITIONS to the next SUPER ROW/COL are at factors of 3.
             	singleArray[oForIndexPCtrl * 3 + iForIndexRCtrl] = board[row / 3 * 3 + oForIndexPCtrl][col / 3 * 3 + iForIndexRCtrl];
 				System.out.println("getSingleSubgroup Method (return array): singleArray[" + ((oForIndexPCtrl * 3)+iForIndexRCtrl) + "] is assigned board["+(row / 3 * 3)+ " + " + oForIndexPCtrl + " or index row " + ((row / 3 * 3) + oForIndexPCtrl) +"]["+(col / 3 * 3)+ " + " + iForIndexRCtrl + " or index col " + ((col / 3 * 3) + iForIndexRCtrl)  +"] = " + board[(row / 3 * 3) + oForIndexPCtrl][(col / 3 * 3) + iForIndexRCtrl]);
             }
