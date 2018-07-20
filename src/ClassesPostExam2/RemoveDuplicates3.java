@@ -19,64 +19,68 @@ public class RemoveDuplicates3 {
 
 	}
 
-	// step 1 create boolean array,
-	// step 2 set all duplicate char to true
-	// step 3 create new array if was false (meaning no dup, b/c true flag means dup
-	
+	// step 1 create boolean array and variables,
+	// step 2 create NESTED LOOP THAT FINDS REPEATS and sets all duplicate char to true
+	// step 3 create new array if was false (meaning no dup/repeat, b/c true flag means dup/repeat)
+		
+	public static char[] removeDuplicate(char[] a) 
+	{
 
-	
-	public static char[] removeDuplicate(char[] a) {
-		boolean[] b = new boolean[a.length];
-		int size = 0; // for tracking number of non-duplicate letters
-		System.out.println("");
-		System.out.println("Size variable initialized as: " + size);
-		System.out.println("");
+// Step 1 create boolean array and variables		
+		boolean[] b = new boolean[a.length];//define boolean array same size as initial array.
 		
+		int size = 0; // initialize variable for for tracking number of non-duplicate letters
 		
-		// start to build the the array (boolean flags)
-		// IMPORTANT: move i w/o moving j----know this relationship...
+// Step 2 create NESTED LOOP THAT FINDS REPEATS and sets
 		for (int i = 0; i < a.length - 1; i++)
-			for (int j = i + 1; j < a.length; j++) {
-				if (a[i] == a[j]) {// set the repeated character to true
-					b[j] = true;// true means dup
+			for (int j = i + 1; j < a.length; j++) 
+			{
+				if (a[i] == a[j]) 
+				{
+					b[j] = true;//IMPORTATN SIMPLE ONE LOC-true means dup/repeat
 				}
+					// The above LOC sets the repeated character to true 
+					// This is how we start to build the the array (boolean flags)
+					// IMPORTANT: move i w/o moving j----know this relationship...				
 				System.out.println("Check for Repeat and write to boolean array :  a[" + i + "] = " + a[i] + " vs a[" + j + "] = " + a[j] );//+ ". RESULTS in b[] FLAG = b[" + j + "] = " + b[j]);
 			}
-		
-		System.out.println("***************************************");
+
+		System.out.println("***** KSNOTE BEGIN: PRINTOUT TO VISUALIZE THE BOOLEAN ARRAY *****");
 		for (int i = 0; i < a.length -1; i++)
 		{
 		System.out.println("Boolean FLAG RESULTS for a[" + i + "] = "+ a[i]+" in b[" + i + "] = " + b[i]);
 		}
-		System.out.println("***************************************");
+		System.out.println("***** KSNOTE END *************************************************");
 		
+// step 3 PART A: create new array if was false (meaning no dup/repeat, b/c true flag means dup/repeat)
 		for (int i = 0; i < a.length; i++) 
 		{
-			if (!b[i])
-			{
-				size++;// this determines the new array size
+			if (!b[i])	//IMPORTANT: THIS LOC means if boolean FLAG is set to false, which means no dup/repeat,
+			{			//then increment size variable, which is the new array length.
+				size++;
 				System.out.println("!b["+i+"] = "+b[i]);
 			}
 		}
-		
-		System.out.println("size variable = " + size);
-
+// step 3 PART B: VERY IMPORTANT TECHNIQUES IN USE HERE--DECLARE and BUILD NEW ARRAY: uses boolean flag condition,
+		//AND GENERATES A SEQUENTIAL INDEX SEPARATE from the For loop's index
 		char[] result = new char[size];
 		int count = 0;
 		for (int i = 0; i < a.length; i++)
 			if (!b[i])
-				result[count++] = a[i];
+				result[count++] = a[i];//by incrementing the index you don't overwrite values, and don't have unused array idexes
 		return result;
 
 	}
 
-	public static void printArray(char a[]) {
-
-		for (int i = 0; i < a.length; i++) {
+	public static void printArray(char a[]) 
+	{
+		for (int i = 0; i < a.length; i++) 
+		{
 			// System.out.printf("%c ", a[i]);
 			// System.out.println();
 
 			System.out.println("boolean array: a[" + i + "] = " + a[i]);
 		}
 	}
+	
 }
