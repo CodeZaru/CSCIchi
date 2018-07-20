@@ -10,24 +10,31 @@ public class RemoveDuplicates3 {
 
 		printArray(a);
 		System.out.println("initial array printed ABOVE");
-		// removeDuplicate(a);
 		a = removeDuplicate(a);
-		System.out.println(a.length);
+		System.out.println("");
+		System.out.println("The length of the new array is calculated into the \"size\" variable"
+				+ "and based on the false values in b[], derived by !b[] condition and new length is:" + a.length);
+		System.out.println("");
 		printArray(a);
 
 	}
 
 	// step 1 create boolean array,
 	// step 2 set all duplicate char to true
-	// step 3 create new array if was false (meaning no dup, b/c true flag means
-	// dup)
+	// step 3 create new array if was false (meaning no dup, b/c true flag means dup
+	
 
+	
 	public static char[] removeDuplicate(char[] a) {
 		boolean[] b = new boolean[a.length];
 		int size = 0; // for tracking number of non-duplicate letters
-
+		System.out.println("");
+		System.out.println("Size variable initialized as: " + size);
+		System.out.println("");
+		
+		
 		// start to build the the array (boolean flags)
-		// move i w/o moving j----know this relationship...
+		// IMPORTANT: move i w/o moving j----know this relationship...
 		for (int i = 0; i < a.length - 1; i++)
 			for (int j = i + 1; j < a.length; j++) {
 				if (a[i] == a[j]) {// set the repeated character to true
@@ -43,13 +50,16 @@ public class RemoveDuplicates3 {
 		}
 		System.out.println("***************************************");
 		
-		for (int i = 0; i < a.length; i++) {
+		for (int i = 0; i < a.length; i++) 
+		{
 			if (!b[i])
+			{
 				size++;// this determines the new array size
-			// b[j] = true;//are you the same as me then mark with true
-			// Might need to adjust this b/c if there are no repeats then the new array
-			// length will be zero
+				System.out.println("!b["+i+"] = "+b[i]);
+			}
 		}
+		
+		System.out.println("size variable = " + size);
 
 		char[] result = new char[size];
 		int count = 0;
