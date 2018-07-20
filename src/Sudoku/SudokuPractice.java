@@ -89,16 +89,16 @@ public class SudokuPractice {
 //if  finds a repeat, the boolean flag is used by add value to pervent the user from entering the value 
 	private boolean okSingleRow(int row) 
 	{
-		boolean result = false;
+		boolean result = true;
 		for (int oForIndexPCtrl = 0;  oForIndexPCtrl < 9; oForIndexPCtrl++)
 			for (int iForIndexRCtrl = oForIndexPCtrl+1; iForIndexRCtrl < 9; iForIndexRCtrl++)
 				if ((board[row][oForIndexPCtrl] == board[row][iForIndexRCtrl]) && (board[row][oForIndexPCtrl] != 0))
 				{
-					System.out.println("okSingleRow Method (return false): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[row][iForIndexRCtrl]);
-					result = false;//return false;					
+					result = false;//return false;	
+					System.out.println("okSingleRow Method (return " + result +"): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[row][iForIndexRCtrl]);
 				}else {
-					System.out.println("okSingleRow Method (return true): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[row][iForIndexRCtrl]);
 					result = true;//return true;
+					System.out.println("okSingleRow Method (return " + result +"): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[row][oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[row][iForIndexRCtrl]);
 				}
 		System.out.println("okSingleRow Final Result= " + result);
 		return result;
@@ -111,11 +111,11 @@ public class SudokuPractice {
 			for (int iForIndexRCtrl = oForIndexPCtrl+1; iForIndexRCtrl < 9; iForIndexRCtrl++)
 				if((board[oForIndexPCtrl][col] == board[iForIndexRCtrl][col]) && (board[oForIndexPCtrl][col] != 0))
 				{
-					System.out.println("okSingleCol Method (return false): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[oForIndexPCtrl][col] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[iForIndexRCtrl][col]);
 					result = false;
+					System.out.println("okSingleCol Method (return " + result +"): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[oForIndexPCtrl][col] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[iForIndexRCtrl][col]);
 				} else {
-					System.out.println("okSingleCol Method (return true): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[oForIndexPCtrl][col] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[iForIndexRCtrl][col]);
 					result = true;
+					System.out.println("okSingleCol Method (return " + result +"): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + board[oForIndexPCtrl][col] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + board[iForIndexRCtrl][col]);					
 				}
 		System.out.println("okSingleCol Final Result= " + result);
 		return result;
@@ -177,25 +177,35 @@ public class SudokuPractice {
     	
     public boolean[] getAllowedValues(int row, int col) {
         boolean [] result = new boolean[9];
+        int [] tentaValues = new int[9];
         int temp = getValueIn(row, col);//store real value at cell (row,col), so we don't lose it with the for loop operation.
 
         for (int i = 0; i < 9; i++) {  // Tentatively placing 1-9 to the block (I think block refers to cell (row, col) arg's coordinates)
-            board[row][col] = i + 1;//iterate values 1-9 into the cell and in the line of code below
-            //run the three validation tests and generate an array of FLAGS associated with the values at each index values = i+1.
+        	board[row][col] = i + 1;//iterate values 1-9 into the cell and in the line of code below
+            tentaValues[i] = board[row][col];
+            System.out.println("Tentative values in given cell (row, col): " + tentaValues[i]);
+
+        	//run the three validation tests and generate an array of FLAGS associated with the values at each index values = i+1.
+            
             result[i] = okSingleRow(row) && okSingleCol(col) && okSingleSubgroup(getSingleSubgroup(row, col));
+            
+
+            System.out.println("Tentative values and their Validattion results (given cell (row, col)): " + tentaValues[i] + " = " + result[i]);
         }
-        
+//        System.out.println("Tentative values and Validattion results of in given cell (row, col): " + + result[i] + " = " + board[row][col]);
+  //      System.out.println("Validattion results of Tentative values in given cell (row, col): " + board[row][col] + result[i]);
         board[row][col] = temp;//set the value back to the original
 
         for (int j = 0; j < 9; j++)
-        	if(result[j] == true)
+        //	if(result[j] == true)
         	{
-        		System.out.println("Allowed:     " + (j+1));
-        	} else {
-                System.out.println("Not Allowed: " + (j+1));
+           		System.out.println("Validation result: " + result[j] + " = " + (j+1));
+        	//} else {
+             //   System.out.println("Not Allowed: " + (j+1));
         	}
         
         return  result;//return the boolean array of FLAGS (can write code that prints the index + 1 if boolean value is true)
+
     }
 
 
@@ -274,6 +284,8 @@ public class SudokuPractice {
 	        game.addInitial(2, 0, 6);
 	        game.addInitial(2, 1, 7);
 	        game.addInitial(2, 2, 8);
+	        //test
+	        game.addInitial(2, 3, 8);
 	        
 	        game.addInitial(3, 0, 3);
 	        game.addInitial(3, 4, 1);
@@ -304,9 +316,10 @@ public class SudokuPractice {
 		System.out.println("NOTE:     TEST-PRINT OF SECOND toString2 method: the Boolean Flags");
 		System.out.println("*********************************************************************");
 		System.out.println("*********************************************************************");
-
 		
 		System.out.println(game.toString2());
+
+		
 	    System.out.println();
 		System.out.println("*****************************************************************************************************************");
 		System.out.println("*****************************************************************************************************************");
@@ -323,7 +336,7 @@ public class SudokuPractice {
 		System.out.println("*****************************************************************************************************************");
 		System.out.println("*****************************************************************************************************************");
 
-		boolean testOkSingleRow = game.okSingleRow(0);
+		boolean testOkSingleRow = game.okSingleRow(2);
 
 	    System.out.println();
 		System.out.println("*****************************************************************************************************************");
@@ -475,7 +488,7 @@ public class SudokuPractice {
 		System.out.println("**********************************************************************************************************************************************************");
 
 		int[] test88GetSingleSubgroup = game.getSingleSubgroup(8, 8);
-
+/*
 	    System.out.println();
 		System.out.println("*****************************************************************************************************************");
 		System.out.println("*****************************************************************************************************************");
@@ -496,25 +509,7 @@ public class SudokuPractice {
 		System.out.println("*****************************************************************************************************************");
 
 		boolean testOkSingleSubgroup = game.okSingleSubgroup(game.getSingleSubgroup(0, 0));
-		
-	    System.out.println();
-		System.out.println("*****************************************************************************************************************");
-		System.out.println("*****************************************************************************************************************");
-		System.out.println("NOTE:     TEST-PRINT OF getAllowedValues method***********************************************************************");
-		System.out.println("1) Takes a cell (row, col) value and stores the real value in a temp, so we ");
-		System.out.println("   don't lose it with the for loop operation.");
-	    System.out.println();
-		System.out.println("2) In a simple for loop, the method iterates values 1-9 into the cell (row, col) and run the three validation"); 				
-		System.out.println("   tests and generate an array of FLAGS associated with the values at each index values = i+1.");
-	    System.out.println();
-	    System.out.println("3) Sets the original cell (row, col) back to its value stored in temp and returns the boolean ");
-		System.out.println("   array of FLAGS (can write code that prints the index + 1 if boolean value is true)"); 
-		System.out.println("*****************************************************************************************************************");
-		System.out.println("*****************************************************************************************************************");
-		
-		
-	//	boolean [] testGetAllowedValues = game.getAllowedValues(2 ,3);
-
+*/		
 		
 	}
 	

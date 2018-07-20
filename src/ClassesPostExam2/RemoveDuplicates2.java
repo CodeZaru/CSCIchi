@@ -28,7 +28,7 @@ public class RemoveDuplicates2 {
 		//move i w/o moving j----know this relationship...
 		for (int i = 0; i < a.length - 1; i++)
 			for (int j = i + 1; j < a.length; j++) {
-				if(a[i] == a[j]) {//set the repeated charater to false
+				if(a[i] == a[j]) {//set the repeated character to false
 					b[j]=true;
 				}
 			for (int i1 = 0; i1 < a.length; i1++)
