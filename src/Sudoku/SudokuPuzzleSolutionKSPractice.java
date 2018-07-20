@@ -153,7 +153,7 @@ public class SudokuPuzzleSolutionKSPractice {
         boolean [] result = new boolean[9];
         int temp = getValueIn(row, col);
 
-        for (int i = 0; i < 9; i++) {  // Tentatively placing 1-9 to the block 
+        for (int i = 0; i < 9; i++) {  // Tentatively placing 1-9 to the block (I think block is cell)
             board[row][col] = i + 1;
             result[i] = okSingleRow(row) && okSingleCol(col) && okSingleSubgroup(getSingleSubgroup(row, col));
         }

@@ -122,7 +122,8 @@ public class SudokuPractice {
 	}
 	
 	//need to create from scratch later
-    private int[] getSingleSubgroup(int row, int col) {
+    private int[] getSingleSubgroup(int row, int col) 
+    {
         int [] singleArray = new int[9];
 
         for (int oForIndexPCtrl = 0; oForIndexPCtrl < 3; oForIndexPCtrl++)
@@ -153,7 +154,8 @@ public class SudokuPractice {
         return singleArray;
     }
 
-    private boolean okSingleSubgroup(int[] subGroup) {
+    private boolean okSingleSubgroup(int[] subGroup) 
+    {
     	boolean result = false;
     	for (int oForIndexPCtrl = 0; oForIndexPCtrl < 9; oForIndexPCtrl++) 
     		for (int iForIndexRCtrl = oForIndexPCtrl + 1; iForIndexRCtrl < 9; iForIndexRCtrl++)
@@ -167,15 +169,34 @@ public class SudokuPractice {
 				}
 		System.out.println("okSingleSubgroup Final Result= " + result);
 		return result;
-
     }
-    
-    
-	
-   public boolean[] getAllowedValues(int row, int col) 
-   {
-	return null;		   
-   }
+    //Straight forward "getter" method
+    public int getValueIn(int row, int col) {
+        return board[row][col];
+    }
+    	
+    public boolean[] getAllowedValues(int row, int col) {
+        boolean [] result = new boolean[9];
+        int temp = getValueIn(row, col);//store real value at cell (row,col), so we don't lose it with the for loop operation.
+
+        for (int i = 0; i < 9; i++) {  // Tentatively placing 1-9 to the block (I think block refers to cell (row, col) arg's coordinates)
+            board[row][col] = i + 1;//iterate values 1-9 into the cell and in the line of code below
+            //run the three validation tests and generate an array of FLAGS associated with the values at each index values = i+1.
+            result[i] = okSingleRow(row) && okSingleCol(col) && okSingleSubgroup(getSingleSubgroup(row, col));
+        }
+        
+        board[row][col] = temp;//set the value back to the original
+
+        for (int j = 0; j < 9; j++)
+        	if(result[j] == true)
+        	{
+        		System.out.println("Allowed:     " + (j+1));
+        	} else {
+                System.out.println("Not Allowed: " + (j+1));
+        	}
+        
+        return  result;//return the boolean array of FLAGS (can write code that prints the index + 1 if boolean value is true)
+    }
 
 
    
@@ -465,10 +486,10 @@ public class SudokuPractice {
 		System.out.println("2) Takes 1st value in array and compares against each of the remaing values, ");
 		System.out.println("   then repeats for 2nd value in the array and so forth");
 	    System.out.println();
-	    System.out.println("2) Each outer loop increment passes control to the inner loop for a complete");
+	    System.out.println("3) Each outer loop increment passes control to the inner loop for a complete");
 		System.out.println("   set of iterations thru the inner loop index, and then pops back to outer loop"); 
 	    System.out.println();
-		System.out.println("3) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
+		System.out.println("4) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
 		System.out.println("   by hooking into the inner loop's starting index value via variable assignment of the outer loop's index ");
 		System.out.println("   to the inner loops index. Hences the inner loop iteration count decreases as the loops work together");
 		System.out.println("*****************************************************************************************************************");
@@ -476,6 +497,24 @@ public class SudokuPractice {
 
 		boolean testOkSingleSubgroup = game.okSingleSubgroup(game.getSingleSubgroup(0, 0));
 		
+	    System.out.println();
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF getAllowedValues method***********************************************************************");
+		System.out.println("1) Takes a cell (row, col) value and stores the real value in a temp, so we ");
+		System.out.println("   don't lose it with the for loop operation.");
+	    System.out.println();
+		System.out.println("2) In a simple for loop, the method iterates values 1-9 into the cell (row, col) and run the three validation"); 				
+		System.out.println("   tests and generate an array of FLAGS associated with the values at each index values = i+1.");
+	    System.out.println();
+	    System.out.println("3) Sets the original cell (row, col) back to its value stored in temp and returns the boolean ");
+		System.out.println("   array of FLAGS (can write code that prints the index + 1 if boolean value is true)"); 
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		
+		
+	//	boolean [] testGetAllowedValues = game.getAllowedValues(2 ,3);
+
 		
 	}
 	
