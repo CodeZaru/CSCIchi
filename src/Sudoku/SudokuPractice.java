@@ -1,4 +1,17 @@
-
+//1) Define Sudoku arrays, two static data structures (as opposed to dynamic) to which all game values are saved.
+//2) Define simple default constructor
+//3) Define two toString() methods: one to use as a way to check expected values against input values
+								  //two to display a boolean flag map to use as a visual sanity check
+//4) Create method to addInitial() values, to set the game up...
+//5) Create method to addGuess() that allows the user to input values to the board.
+//6) Create validation mechanism that implements the validation logic of Sudoku to handle user data input:
+			//i)	Check Row for Repeats
+			//ii)	Check Column for Repeats
+			//iii)	Check SubGroups for Repeats
+//7) Create cumulative checking mechanism to basically just demonstrates that you can do implement an aggregate check.
+	//Note that there doesn't seem to be additional benefit, because it uses the same tests as the validation step 6
+	//so if the validation are flawed on the individual/granular level, it will also have the same flaw when used in a loop
+//8) 
 public class SudokuPractice {
 	
 	private final int [][] board = new int[9][9];//final makes it so that the board can't change.
@@ -71,21 +84,9 @@ public class SudokuPractice {
 	if(!start[row][col])// && getAllowedValues(row, col)[value - 1])
 		board[row][col] = value;				
 	}
-	//
-//placeholder for checkPuzzle()
-	//
-	
-//"okRows" method works in combination with "okSingleRow" method.
-//"okRows" iterates through all the rows and calls the okSingleRow()
-//and returns false if (!okSingleRow)
-	private boolean okRows() 
-	{
-		for (int row = 0; row < 9; row++)
-			if (!okSingleRow(row))
-				return false;
-		return true;				
-	}
 
+//okSingleRow is a simple repeat test that iterates through an array and checks for repeating values
+//if  finds a repeat, the boolean flag is used by add value to pervent the user from entering the value 
 	private boolean okSingleRow(int row) 
 	{
 		boolean result = false;
@@ -102,19 +103,7 @@ public class SudokuPractice {
 		System.out.println("okSingleRow Final Result= " + result);
 		return result;
 	}
-	//okCols() like okRows() basically a For Loop that calls okSingleRow/Col
-	//and checks to see if the boolean value returned is true
-	//if !ok or in other words !true, then a false FLAG is set
-	//this logic operator/false FLAG has implications for user updates
-	//if the false FLAG is set, the user can't update..  In my version, I'll try to return to the user a hint of 
-	//which logic test got flagged.
-	private boolean okCols() 
-	{
-		for (int col = 0; col < 9; col++)
-			if (!okSingleCol(col))
-				return false;
-		return true;
-	}
+
 	private boolean okSingleCol(int col)
 	{
 		boolean result = false;
@@ -163,17 +152,85 @@ public class SudokuPractice {
             }
         return singleArray;
     }
-	
+
+    private boolean okSingleSubgroup(int[] subGroup) {
+    	boolean result = false;
+    	for (int oForIndexPCtrl = 0; oForIndexPCtrl < 9; oForIndexPCtrl++) 
+    		for (int iForIndexRCtrl = oForIndexPCtrl + 1; iForIndexRCtrl < 9; iForIndexRCtrl++)
+    		 	if((subGroup[oForIndexPCtrl] == subGroup[iForIndexRCtrl]) && (subGroup[oForIndexPCtrl] != 0))
+				{
+					System.out.println("okSingleSubgroup Method (return false): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + subGroup[oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + subGroup[iForIndexRCtrl]);
+					result = false;
+				} else {
+					System.out.println("okSingleSubgroup Method (return true): oForIndexPCtrl["+ oForIndexPCtrl +"] = " + subGroup[oForIndexPCtrl] + " vs iForIndexRCtrl["+ iForIndexRCtrl +"] = " + subGroup[iForIndexRCtrl]);
+					result = true;
+				}
+		System.out.println("okSingleSubgroup Final Result= " + result);
+		return result;
+
+    }
+    
+    
 	
    public boolean[] getAllowedValues(int row, int col) 
    {
 	return null;		   
    }
+
+
+   
+//####################################################################
+//####################################################################
+//####	NOTE: These methods are included for completeness, But they ##
+//####  DON'T seem to add much actual validation value  ##############
+//####  See notes at the top of this class for explanation why #######
+//####################################################################
+//####################################################################
+
+ //"okRows" method works in combination with "okSingleRow" method.
+ //"okRows" iterates through all the rows and calls the okSingleRow()
+ //and returns false if (!okSingleRow)
+ 	private boolean okRows() 
+ 	{
+ 		for (int row = 0; row < 9; row++)
+ 			if (!okSingleRow(row))
+ 				return false;
+ 		return true;				
+ 	}
+   
+	//okCols() like okRows() basically a For Loop that calls okSingleRow/Col
+	//and checks to see if the boolean value returned is true
+	//if !ok or in other words !true, then a false FLAG is set
+	//this logic operator/false FLAG has implications for user updates
+	//if the false FLAG is set, the user can't update..  In my version, I'll try to return to the user a hint of 
+	//which logic test got flagged.   
+
+	private boolean okCols() 
+	{
+		for (int col = 0; col < 9; col++)
+			if (!okSingleCol(col))
+				return false;
+		return true;
+	}
+
+	   private boolean okSubgroups() {
+	        for (int majorRow = 0; majorRow < 3; majorRow++) 
+	            for (int majorCol = 0; majorCol < 3; majorCol++)
+	                if (!okSingleSubgroup(getSingleSubgroup(majorRow * 3, majorCol * 3)))
+	                    return false;
+	        return true;
+	    }
 	
+ 	public boolean checkPuzzle() {
+       return okRows() && okCols() && okSubgroups();
+   }
+   
+   
+   
 //##################################################
 //##################################################
-//#######CREATED THE MAIN METHOD BELOW TO###########
-//#######TEST THE CLASS AS WE CODE##################
+//####	 CREATED THE MAIN METHOD BELOW TO   ########
+//####   TEST THE CLASS AS WE CODE   ###############
 //##################################################
 //##################################################
 	
@@ -240,13 +297,13 @@ public class SudokuPractice {
 		System.out.println("   set of iterations thru the inner loop index, and then pops back to outer loop"); 
 	    System.out.println();
 		System.out.println("3) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
-		System.out.println("   by hooking into the inner loop's starting index value via variabe assignment of the outer loop's index ");
+		System.out.println("   by hooking into the inner loop's starting index value via variable assignment of the outer loop's index ");
 		System.out.println("   to the inner loops index. Hences the inner loop iteration count decreases as the loops work together");
 		System.out.println("*****************************************************************************************************************");
 		System.out.println("*****************************************************************************************************************");
 
 		boolean testOkSingleRow = game.okSingleRow(0);
-//		System.out.println(testOkSingleRow);
+
 	    System.out.println();
 		System.out.println("*****************************************************************************************************************");
 		System.out.println("*****************************************************************************************************************");
@@ -258,7 +315,7 @@ public class SudokuPractice {
 		System.out.println("   set of iterations thru the inner loop index, and then pops back to outer loop"); 
 	    System.out.println();
 		System.out.println("3) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
-		System.out.println("   by hooking into the inner loop's starting index value via variabe assignment of the outer loop's index ");
+		System.out.println("   by hooking into the inner loop's starting index value via variable assignment of the outer loop's index ");
 		System.out.println("   to the inner loops index. Hences the inner loop iteration count decreases as the loops work together");
 		System.out.println("*****************************************************************************************************************");
 		System.out.println("*****************************************************************************************************************");
@@ -398,7 +455,28 @@ public class SudokuPractice {
 
 		int[] test88GetSingleSubgroup = game.getSingleSubgroup(8, 8);
 
-	
+	    System.out.println();
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("NOTE:     TEST-PRINT OF okSingleSubgroup method***********************************************************************");
+		System.out.println("1) Different from okSingleRow and okSingleCol, the okSingleSubgroup method takes an array");
+		System.out.println("   as the argument and then basically workd the same way as the other two methods");
+	    System.out.println();
+		System.out.println("2) Takes 1st value in array and compares against each of the remaing values, ");
+		System.out.println("   then repeats for 2nd value in the array and so forth");
+	    System.out.println();
+	    System.out.println("2) Each outer loop increment passes control to the inner loop for a complete");
+		System.out.println("   set of iterations thru the inner loop index, and then pops back to outer loop"); 
+	    System.out.println();
+		System.out.println("3) Also, each outer loop increment decreases the range of the inner loop indexes remaining thru which to iterate");
+		System.out.println("   by hooking into the inner loop's starting index value via variable assignment of the outer loop's index ");
+		System.out.println("   to the inner loops index. Hences the inner loop iteration count decreases as the loops work together");
+		System.out.println("*****************************************************************************************************************");
+		System.out.println("*****************************************************************************************************************");
+
+		boolean testOkSingleSubgroup = game.okSingleSubgroup(game.getSingleSubgroup(0, 0));
+		
+		
 	}
 	
 }
