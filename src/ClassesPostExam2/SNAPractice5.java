@@ -6,7 +6,7 @@
 public class SNAPractice5 {
 	public static void main (String args[]) {
 	//1) step 1-create random integer array
-	//2) step 2-search the array for the smallest int and it's index (via for loop) and set to vairables--this is the inner loop
+	//2) step 2-search the array for the smallest int and it's index (via for loop) and set to variables--this is the inner loop
 	//3) step 3-swap the smallest int's index location/value with index[0]--outside the inner loop and part of outer loop once it is developed.
 	//4) step 4-add an outer loop and hook/integrate the indexes, so the inner and outer loops dynamically work with each other
 	
