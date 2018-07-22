@@ -42,7 +42,7 @@ public class RemoveDuplicates3 {
 					// The above LOC sets the repeated character to true 
 					// This is how we start to build the the array (boolean flags)
 					// IMPORTANT: move i w/o moving j----know this relationship...				
-				System.out.println("Check for Repeat and write to boolean array :  a[" + i + "] = " + a[i] + " vs a[" + j + "] = " + a[j] );//+ ". RESULTS in b[] FLAG = b[" + j + "] = " + b[j]);
+				System.out.println("Check for Repeat and write to boolean array:  a[" + i + "] = " + a[i] + " vs a[" + j + "] = " + a[j] );//+ ". RESULTS in b[] FLAG = b[" + j + "] = " + b[j]);
 			}
 
 		System.out.println("***** KSNOTE BEGIN: PRINTOUT TO VISUALIZE THE BOOLEAN ARRAY *****");
@@ -52,7 +52,7 @@ public class RemoveDuplicates3 {
 		}
 		System.out.println("***** KSNOTE END *************************************************");
 		
-// step 3 PART A: create new array if was false (meaning no dup/repeat, b/c true flag means dup/repeat)
+// step 3 PART A: create new array length assign to size variable--if was false (meaning no dup/repeat, b/c true flag means dup/repeat)
 		for (int i = 0; i < a.length; i++) 
 		{
 			if (!b[i])	//IMPORTANT: THIS LOC means if boolean FLAG is set to false, which means no dup/repeat,
