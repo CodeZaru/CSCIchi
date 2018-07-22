@@ -19,7 +19,7 @@ public class RemoveDuplicates3 {
 
 	}
 //Summary: Remove duplicates from an array by using three arrays: original array, boolean flag array, and destination array.  
-	// step 1 create boolean array and variables,
+	// Step 1 create a-c: a) test-Array of char; b) a boolean array and variables; c) printArray method.
 	// step 2 create NESTED LOOP THAT FINDS REPEATS and sets all duplicate char to true
 	// step 3 create new array if was false (meaning no dup/repeat, b/c true flag means dup/repeat)
 		
