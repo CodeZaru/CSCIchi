@@ -107,5 +107,16 @@ package shapes;
 			// TODO Auto-generated method stub
 			
 		} 
+		
+		public static void main (String[] args) 
+		{		
+		RightTriangleInterface randomRightTri = new RightTriangle(5, 2, 2);
+		System.out.println("Triangle offset: " + randomRightTri.getOffset ());//KS deBug LOC..
+		drawRandomRightTri(randomRightTri);
+		}
+		private static void drawRandomRightTri(RightTriangleInterface randomRightTri) 
+		{ 
+			randomRightTri.drawHere(); // ; 
+		} 	
 
 }

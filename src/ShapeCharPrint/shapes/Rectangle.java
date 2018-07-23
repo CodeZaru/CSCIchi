@@ -21,7 +21,13 @@ public class Rectangle extends ShapeBase implements RectangleInterface {
 		height = theHeight;
 		width = theWidth;
 	}
-
+//KS Note: added the below for square class which extends rectangle
+	public Rectangle(int theOffset, int theSide) {
+		setOffset(theOffset);//super(theOffset);
+		height = theSide;
+		width =  theSide;
+	}
+	
 	public void set(int newHeight, int newWidth) {
 		height = newHeight;
 		width = newWidth;
@@ -78,4 +84,7 @@ public class Rectangle extends ShapeBase implements RectangleInterface {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	
+	
  } 
