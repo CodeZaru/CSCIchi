@@ -5,7 +5,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry excluding="RPSjava/|CECh3thru5/|timeElapse/|SecretCodeASCIIDecoder/|KlingonOx/|EdocARGame/|CECh6thru7/|RatNumGCD/|VotingBooth/|Palindrome/|Sudoku/|TemperatureConversion/|ClassesPostExam2/|LoopPractice/|ShapeCharPrint/|ShapeCharPrint/interfaces/" kind="src" path="src"/>
+	<classpathentry excluding="RPSjava/|CECh3thru5/|timeElapse/|SecretCodeASCIIDecoder/|KlingonOx/|EdocARGame/|CECh6thru7/|RatNumGCD/|VotingBooth/|Palindrome/|Sudoku/|TemperatureConversion/|ClassesPostExam2/|LoopPractice/|ShapeCharPrint/|ShapeCharPrint/interfaces/|personPolymorphHW/|personPolymorphHW/person/" kind="src" path="src"/>
 	<classpathentry kind="src" path="src/RPSjava"/>
 	<classpathentry kind="src" path="src/CECh3thru5"/>
 	<classpathentry kind="src" path="src/timeElapse"/>
@@ -21,5 +21,6 @@
 	<classpathentry kind="src" path="src/ClassesPostExam2"/>
 	<classpathentry kind="src" path="src/LoopPractice"/>
 	<classpathentry excluding="interfaces/" kind="src" path="src/ShapeCharPrint"/>
+	<classpathentry excluding="person/" kind="src" path="src/personPolymorphHW"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

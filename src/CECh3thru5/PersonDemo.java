@@ -1,7 +1,7 @@
 //OOP
 
 import java.util.Scanner;
-public class PersonDemo {
+public class PersonDemoOrig {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

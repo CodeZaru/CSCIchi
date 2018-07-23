@@ -1,6 +1,6 @@
 
 //OOP
-public class Person {
+public class PersonOrig {
 	//instance variables/Attributes/Properties
 	private String name;
 	//if you did the above line like below public instead of private
@@ -11,7 +11,7 @@ public class Person {
 	//They are always public
 	//they are the same name as the class/file.
 	//Default Constructor (by default it is public)
-	Person() {
+	PersonOrig() {
 		name = "John Doe";
 		age = 55;
 	}
@@ -23,7 +23,7 @@ public class Person {
 	//if you change the signature to be String n and int a and change the righthand side to  n and a
 	//in that case java would automatically use this b/c it won't confuse with the local variable.
 	//full around with this to see..
-	Person(String name, int age) {
+	PersonOrig(String name, int age) {
 		this.name = name;
 		this.age = age;
 	}	
@@ -53,11 +53,11 @@ public void setNameAge(String name, int age) {
 	setAge(age);
 }
 
-public boolean isSamePerson(Person another) {
+public boolean isSamePerson(PersonOrig another) {
 	return (isSameAge(another) && isSameName(another));
 }
 
-public boolean isSameAge(Person another) {
+public boolean isSameAge(PersonOrig another) {
 
 	return (this.age == another.age);
 /*	
@@ -69,15 +69,15 @@ public boolean isSameAge(Person another) {
 	return result;
 */
 }
-public boolean isSameName(Person another) {
+public boolean isSameName(PersonOrig another) {
 	return (this.name.equalsIgnoreCase(another.getName()));//could also be another.name
 }
 
-public boolean isYounger(Person another) {
+public boolean isYounger(PersonOrig another) {
 	return (this.age < another.age);
 }
 
-public boolean isOlder(Person another) {
+public boolean isOlder(PersonOrig another) {
 	return (this.age > another.age);
 }
 
