@@ -13,9 +13,16 @@ public class Triangle extends ShapeBase implements TriangleInterface {
 		super();
 		base = 0;
 	}
+//1) Added offSet to the TriangleInterface set method
+//2) Added setOffset (int newOffset) and getOffset () to ShapeBase.java
+//3) Both methods are also in ShapeInterface.java
+//4) Added super.setOffset(theOffset); to the Triangle constructor below //KS Note: the super modifier is optional here	
+//5) Added set method to Triangle class with same signature as the TriangleInterface
+//6) Make sure not to let automagic Eclipse get method override the super (like getOffset() that is commented out below.)  
 
 	public Triangle(int theOffset, int theBase) {
-		super();//theOffset);
+		//super.setOffset(theOffset);//KS Note: the super modifier is optional here
+		setOffset(theOffset);//orig: super(theOffset);
 		base = theBase;
 	}
 
@@ -70,16 +77,27 @@ public class Triangle extends ShapeBase implements TriangleInterface {
 			System.out.print(' '); 
 	}
 
-	@Override
-	public void setOffset(int newOffset) {
+//	@Override
+//	public void setOffset(int newOffset) {
 		// TODO Auto-generated method stub
 		
-	}
+//	}
+
+//KS IMPORTANT NOTE: ECLIPSE ERROR HELP AUTOMATICALLY GENERATED THIS getOffset() method
+//But it is not in the TriangleInterface (just the ShapeInterface which is a super, so
+//we don't need it in the Triangle class and it 
+//Causes Problems b/c it was set to return 0 instead of the actual offset that we set, 
+//which was 5...
+//	@Override
+//	public int getOffset() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 	@Override
-	public int getOffset() {
+	public void set(int offSet, int newBase) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	} 
 
 }

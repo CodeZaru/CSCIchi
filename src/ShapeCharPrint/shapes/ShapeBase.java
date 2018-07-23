@@ -15,4 +15,14 @@ public abstract class ShapeBase implements ShapeInterface {
 			System.out.println();
 		drawHere();
 	}
+	
+	public int getOffset ()
+	{
+		return offset;
+	}
+	public void setOffset (int newOffset)
+	{
+		offset = newOffset;
+	}
+	
 }

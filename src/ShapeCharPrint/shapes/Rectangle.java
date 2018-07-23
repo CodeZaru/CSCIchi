@@ -10,14 +10,14 @@ public class Rectangle extends ShapeBase implements RectangleInterface {
 	private int height;
 	private int width;
 
-	public Rectangle() {
-		super();
-		height = 0;
-		width = 0;
-	}
+//	public Rectangle() {
+//		super();
+//		height = 0;
+//		width = 0;
+//	}
 
 	public Rectangle(int theOffset, int theHeight, int theWidth) {
-		super();//theOffset);
+		setOffset(theOffset);//super(theOffset);
 		height = theHeight;
 		width = theWidth;
 	}
@@ -61,15 +61,21 @@ public class Rectangle extends ShapeBase implements RectangleInterface {
 			System.out.print(' ');
 	}
 
-	@Override
-	public void setOffset(int newOffset) {
-		// TODO Auto-generated method stub
+//	@Override
+//	public void setOffset(int newOffset) {
+//		// TODO Auto-generated method stub
 		
-	}
+//	}
+
+//	@Override
+//	public int getOffset() {
+//		// TODO Auto-generated method stub
+//		return 0;
+//	}
 
 	@Override
-	public int getOffset() {
+	public void set(int offset, int newHeight, int newWidth) {
 		// TODO Auto-generated method stub
-		return 0;
+		
 	}
  } 
