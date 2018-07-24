@@ -84,6 +84,20 @@ public class Rectangle extends ShapeBase implements RectangleInterface {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public static void main (String[] args) 
+	{		
+	RectangleInterface theRectangle = new Rectangle(5, 7);
+	System.out.println("Rectangle offset: " + theRectangle.getOffset ());//KS deBug LOC..
+	//drawTheSquare(theRectangle);
+	theRectangle.drawHere();
+	}
+	private static void drawTheRectangle(RectangleInterface theRectangle) 
+	{ 
+		theRectangle.drawHere(); 
+	} 
+
+	
 	
 	
 	

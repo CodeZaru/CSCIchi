@@ -12,6 +12,7 @@ package shapes;
 
 //		public Square() {
 //			super();
+//			side = 5;
 //			height = 0;
 //			width = 0;
 //		}
@@ -25,10 +26,11 @@ package shapes;
 //6) Make sure not to let automagic Eclipse get method override the super (like getOffset() that is commented out below.)  
 //7) Created a constructor in square class that takes one arg for side, and sent it to super(arg1,arg2)
 //   see first constructor below, then added a constructor to rectangle to account for two args meaning sides are same length..		
+
 		public Square(int theOffset, int theSide) {
 			//setOffset(theOffset);//KS Note: this triggered error on stub even with "super." but super(theOffset) worked
 			super(theOffset, theSide);//KS Note: this seems to be the solution...
-		
+//KS Note: Ask professor about this part...
 		}
 
 		public void set(int newSide) {
@@ -91,7 +93,10 @@ package shapes;
 		{		
 		SquareInterface theSquare = new Square(5, 7);
 		System.out.println("Square offset: " + theSquare.getOffset ());//KS deBug LOC..
-		drawTheSquare(theSquare);
+		//drawTheSquare(theSquare);
+		Square theSquare2 = new Square(5, 7);
+		theSquare.drawHere();
+		theSquare2.drawHere();
 		}
 		private static void drawTheSquare(SquareInterface theSquare) 
 		{ 
