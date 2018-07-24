@@ -30,7 +30,7 @@ package shapes;
 		public Square(int theOffset, int theSide) {
 			//setOffset(theOffset);//KS Note: this triggered error on stub even with "super." but super(theOffset) worked
 			super(theOffset, theSide);//KS Note: this seems to be the solution...
-//KS Note: Ask professor about this part...
+										//KS Note: Ask professor about this part...and the square interface extends LOC.
 		}
 
 		public void set(int newSide) {
@@ -39,9 +39,10 @@ package shapes;
 
 		public void drawHere()
 		{ 
-			drawHorizontalLine(); 
-			drawSides(); 
-			drawHorizontalLine(); 
+	//		drawHorizontalLine(); 
+	//		drawSides(); 
+	//		drawHorizontalLine(); 
+			super.drawHere();
 		}
 
 		private void drawHorizontalLine() {

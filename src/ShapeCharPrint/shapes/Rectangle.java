@@ -9,6 +9,7 @@ package shapes;
 public class Rectangle extends ShapeBase implements RectangleInterface {
 	private int height;
 	private int width;
+	
 
 //	public Rectangle() {
 //		super();
@@ -89,6 +90,8 @@ public class Rectangle extends ShapeBase implements RectangleInterface {
 	{		
 	RectangleInterface theRectangle = new Rectangle(5, 7);
 	System.out.println("Rectangle offset: " + theRectangle.getOffset ());//KS deBug LOC..
+//	System.out.println("Rectangle offset: " + theRectangle.height);//KS deBug LOC..
+//	System.out.println("Rectangle offset: " + theRectangle.width);//KS deBug LOC..
 	//drawTheSquare(theRectangle);
 	theRectangle.drawHere();
 	}
