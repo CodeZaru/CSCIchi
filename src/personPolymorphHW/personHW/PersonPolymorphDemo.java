@@ -10,10 +10,11 @@ public class PersonPolymorphDemo {
 		people[3] = new Undergraduate("Bugg, June", 9901, 4);
 		//people[4] = new Undergraduate();
 
+		//KS Note: for each Person p (Person is dataType of local variable "p") in(":"=in) the array "people"
 		for (Person p : people)
 		{
 			p.writeOutput();
-			System.out.println();;
+			System.out.println();
 		}
 		
 	}

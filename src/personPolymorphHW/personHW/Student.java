@@ -4,23 +4,25 @@ public class Student extends Person {
 	private int studentNumber;
 
 	public Student() { 
-		super(); 
+		super(); //KS Note: this executes the default person constructor
 		studentNumber = 0; //Indicating no number yet 
 	} 
 	public Student(String initialName, int initialStudentNumber) 
 	{
-		super(initialName); 
+		super(initialName); //KS Note: You have to know the parent constructors..
 		studentNumber = initialStudentNumber; 
 		} 
 
 	//KS Note: for constructors we use super(), but for other methods
 	//like set, we just call the set method in parent class as if it were
 	//in this class.  The rest is set as usual
+	//reset wasn't in parent, but since it is comprehensive/cumulative reset is a good name
 	public void reset(String newName, int newStudentNumber) 
 	{ 
-		setName(newName); 
+		setName(newName);//important to note that Student has no setName method, this is a direct call to parent's method
 		studentNumber = newStudentNumber; 
 		} 
+	//getters and setters for this class' variables only
 	public int getStudentNumber() 
 	{ 
 		return studentNumber; 
