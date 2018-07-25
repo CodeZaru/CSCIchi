@@ -21,7 +21,7 @@ public class Temperature2Test {
 		}
 		else
 			System.out.println("Temerature(temperature) constructor test failed.");
-
+//TEST-3
 		if (new Temperature2('c').getCelsius() == 0f && new Temperature2('f').getCelsius() == -17.78f)
 		{
 			grade += 5;
@@ -29,7 +29,7 @@ public class Temperature2Test {
 		}
 		else
 			System.out.println("Temerature(scale1) constructor test failed.");
-
+//TEST-4
 		if (new Temperature2(100f, 'c').getCelsius() == 100.0f && new Temperature2(32f, 'f').getCelsius() == 0f)
 		{
 			grade += 5;
@@ -40,7 +40,7 @@ public class Temperature2Test {
 
 		Temperature2 t1 = new Temperature2();// kitchen in class
 		Temperature2 t2 = new Temperature2();// kitchen in class
-
+//TEST-5
 		t1.setDegrees(24f);
 		if (t1.getCelsius() == 24f && new Temperature2(32f, 'f').getCelsius() == 0f)
 		{
@@ -104,6 +104,7 @@ System.out.println(t2.isLess(t1));
 		String t3 = "24.0C";
 		
 		System.out.println("t3: " + t3 + " vs t1: " + t1.toString());
+		System.out.println("boolean: " + "24.0C".equalsIgnoreCase(t1.toString()));
 		System.out.println("boolean: " + t1.toString().equalsIgnoreCase(t1.toString()));
 
 		if (t1.toString() != null)
@@ -113,6 +114,21 @@ System.out.println(t2.isLess(t1));
 		}	
 		else
 			System.out.println("TEST-10:  Temerature(scale3) constructor test failed.");
+		
+//TEST-11
+		t1.setDegrees(24f);//logically doing this should reault in ftored value as F and coversions reversed..
+		t1.setDegrees('F');//flow: converts stored degree to F but then reverts scale C keeping degree of F
+		System.out.println("TEST-11: " + t1.toString());
+		System.out.println("TEST-11: C = " + t1.getCelsius());
+		System.out.println("TEST-11: F = " + t1.getFahrenheit());
+		if (t1.getCelsius() == 24f && t1.getFahrenheit() == 70f)// 
+		{
+			grade += 5;
+			System.out.println("TEST-11: Temerature() constructor test PASSED! cumul grade: " + grade);
+		}	
+		else
+			System.out.println("TEST-11: Temerature(scale3) constructor test failed.");
+
 		
 		
 		
