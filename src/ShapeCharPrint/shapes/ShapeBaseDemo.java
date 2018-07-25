@@ -23,7 +23,7 @@ public class ShapeBaseDemo {
 
 //	public static void drawTree(int topWidth, int bottomWidth, int bottomHeight) {
 	public static void drawTree(int topWidth, int bottomWidth, int bottomHeight, int legA, int legB, int side) {
-		System.out.println(" Save the Redwoods!");
+		System.out.println(" textbook example.. Kevin's are down below!");
 		TriangleInterface treeTop = new Triangle(INDENT, topWidth);
 		System.out.println("Triangle offset: " + treeTop.getOffset ());//KS deBug LOC..
 		drawTop(treeTop);
@@ -35,7 +35,7 @@ public class ShapeBaseDemo {
 		drawTrunk(treeTrunk);
 
 		RightTriangleInterface randomRightTri = new RightTriangle(INDENT, legA, legB);
-		System.out.println("Triangle offset: " + randomRightTri.getOffset ());//KS deBug LOC..
+		System.out.println("RIGHT Triangle offset: " + randomRightTri.getOffset ());//KS deBug LOC..
 		drawRandomRightTri(randomRightTri);
 
 		SquareInterface theSquare = new Square(INDENT, side);
