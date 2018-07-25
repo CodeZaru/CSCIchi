@@ -61,4 +61,8 @@ public class Temperature2 {
     public boolean isLess(Temperature2 that) {
         return this.temp < that.temp;
     }
+    
+	public String toString() {
+		return this.temp + "C\n";
+	}
 }
