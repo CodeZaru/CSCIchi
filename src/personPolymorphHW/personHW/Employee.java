@@ -39,7 +39,7 @@ public class Employee extends Person {
 		return department;
 	}
 	
-	public void writeOutpu() {
+	public void writeOutput() {
 		super.writeOutput();
 		System.out.println("EmployyID is: " + employeeID);
 		System.out.println("Department is: " + department);
