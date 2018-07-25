@@ -13,7 +13,9 @@ public class Student extends Person {
 		studentNumber = initialStudentNumber; 
 		} 
 
-	
+	//KS Note: for constructors we use super(), but for other methods
+	//like set, we just call the set method in parent class as if it were
+	//in this class.  The rest is set as usual
 	public void reset(String newName, int newStudentNumber) 
 	{ 
 		setName(newName); 
@@ -27,10 +29,15 @@ public class Student extends Person {
 	{ 
 		studentNumber = newStudentNumber; 
 		} 
+	//KS Note: note that we use the getName method instead of using the variable
+	//because the variable is private to its class and outside the class we
+	//can only access it via a public getter/setter method.
 	public void writeOutput() {
 		System.out.println("Name: " + getName()); 
 		System.out.println("Student Number: " + studentNumber); 
 		} 
+	//key here is defining a hasSameName type method in the parent and current class...
+	//also note that the equals method doffers by data type.
 	public boolean equals(Student otherStudent) 
 	{ 
 		return this.hasSameName(otherStudent) && (this.studentNumber == otherStudent.studentNumber); 
